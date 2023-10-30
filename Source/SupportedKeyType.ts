@@ -5,4 +5,4 @@
  * All of the supported key data types.
  * Note: Bitmaps and HyperLogLogs count as 'string'.
  */
-export type SupportedKeyType = 'string' | 'hash' | 'list' | 'set' | 'zset';
+export type SupportedKeyType = "string" | "hash" | "list" | "set" | "zset";
