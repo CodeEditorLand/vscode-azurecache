@@ -2,19 +2,19 @@
   "name": "vscode-azurecache",
   "displayName": "Azure Cache",
   "description": "Manage and browse through data in your Azure Caches.",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "aiKey": "AIF-00000000-0000-0000-0000-000000000000",
-  "publisher": "ms-azurecache",
+  "publisher": "playform",
   "preview": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/microsoft/vscode-azurecache"
+    "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
   },
   "bugs": {
-    "url": "https://github.com/microsoft/vscode-azurecache/issues"
+    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
   },
-  "homepage": "https://github.com/microsoft/vscode-azurecache/blob/main/README.md",
-  "license": "SEE LICENSE IN LICENSE.txt",
+  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
+  "license": "MIT",
   "icon": "resources/azure-cache.png",
   "main": "./dist/extension.js",
   "scripts": {
@@ -26,7 +26,8 @@
     "test": "node ./out/src/test/runTest.js",
     "watch": "webpack --mode development --watch --info-verbosity verbose",
     "package": "vsce package --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
-    "publish": "vsce publish --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/"
+    "publish": "vsce publish --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
+    "prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
   },
   "activationEvents": [
     "onView:azureCache"
@@ -233,7 +234,8 @@
     "vsce": "1.77.0",
     "vscode-test": "1.4.0",
     "webpack": "5.89.0",
-    "webpack-cli": "5.1.4"
+    "webpack-cli": "5.1.4",
+    "typescript-esbuild": "0.3.1"
   },
   "dependencies": {
     "@babel/runtime": "7.23.4",
@@ -249,5 +251,15 @@
   },
   "extensionDependencies": [
     "ms-vscode.azure-account"
-  ]
+  ],
+  "type": "module",
+  "private": "false",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Nikola Hristov",
+    "email": "nikola@nikolahristov.tech",
+    "url": "https://nikolahristov.tech"
+  }
 }
