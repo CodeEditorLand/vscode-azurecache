@@ -1,56 +1,103 @@
 {
   "name": "vscode-azurecache",
   "displayName": "Azure Cache",
-  "description": "Manage and browse through data in your Azure Caches.",
   "version": "0.0.1",
-  "aiKey": "AIF-00000000-0000-0000-0000-000000000000",
-  "publisher": "playform",
-  "preview": true,
+  "private": "false",
+  "description": "Manage and browse through data in your Azure Caches.",
+  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
+  "bugs": {
+    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
   },
-  "bugs": {
-    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
-  },
-  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
   "license": "MIT",
-  "icon": "resources/azure-cache.png",
+  "author": {
+    "name": "Nikola Hristov",
+    "email": "nikola@nikolahristov.tech",
+    "url": "https://nikolahristov.tech"
+  },
+  "publisher": "playform",
+  "type": "module",
   "main": "./dist/extension.js",
   "scripts": {
-    "vscode:prepublish": "webpack --mode production",
     "clean": "rimraf out/ dist/",
     "compile": "rimraf out/ && tsc -p ./tsconfig-test.json",
     "lint": "eslint src src-shared src-webview --ext .ts,.tsx",
+    "package": "vsce package --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
+    "prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+    "publish": "vsce publish --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
     "pretest": "npm run compile && npm run lint",
     "test": "node ./out/src/test/runTest.js",
-    "watch": "webpack --mode development --watch --info-verbosity verbose",
-    "package": "vsce package --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
-    "publish": "vsce publish --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
-    "prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
+    "vscode:prepublish": "webpack --mode production",
+    "watch": "webpack --mode development --watch --info-verbosity verbose"
   },
-  "activationEvents": [
-    "onView:azureCache"
-  ],
   "contributes": {
-    "viewsContainers": {
-      "activitybar": [
-        {
-          "id": "azure",
-          "title": "Azure",
-          "icon": "resources/azure.svg"
-        }
-      ]
-    },
-    "views": {
-      "azure": [
-        {
-          "id": "azureCache",
-          "name": "Caches",
-          "icon": "resources/azure-cache.svg"
-        }
-      ]
-    },
+    "commands": [
+      {
+        "command": "azureCache.selectSubscriptions",
+        "title": "Select Subscriptions...",
+        "icon": "$(filter)",
+        "category": "Azure Cache"
+      },
+      {
+        "command": "azureCache.refresh",
+        "title": "Refresh",
+        "category": "Azure Cache"
+      },
+      {
+        "command": "azureCache.openInPortal",
+        "title": "Open in Portal",
+        "category": "Azure Cache"
+      },
+      {
+        "command": "azureCache.setKeyFilter",
+        "title": "Set key filter",
+        "category": "Azure Cache",
+        "icon": "$(filter)"
+      },
+      {
+        "command": "azureCache.showStringItem",
+        "title": "Show string item",
+        "category": "Azure Cache"
+      },
+      {
+        "command": "azureCache.showUnsupportedItem",
+        "title": "Show unsupported item",
+        "category": "Azure Cache"
+      },
+      {
+        "command": "azureCache.copyConnectionString",
+        "title": "Copy connection string",
+        "category": "Azure Cache"
+      },
+      {
+        "command": "azureCache.viewCacheProps",
+        "title": "View cache properties",
+        "category": "Azure Cache"
+      },
+      {
+        "command": "azureCache.viewList",
+        "title": "View list",
+        "category": "Azure Cache"
+      },
+      {
+        "command": "azureCache.viewHash",
+        "title": "View hash",
+        "category": "Azure Cache"
+      },
+      {
+        "command": "azureCache.viewSet",
+        "title": "View set",
+        "category": "Azure Cache"
+      },
+      {
+        "command": "azureCache.viewZSet",
+        "title": "View sorted set",
+        "category": "Azure Cache"
+      }
+    ],
     "menus": {
       "view/item/context": [
         {
@@ -131,70 +178,39 @@
         }
       ]
     },
-    "commands": [
-      {
-        "command": "azureCache.selectSubscriptions",
-        "title": "Select Subscriptions...",
-        "icon": "$(filter)",
-        "category": "Azure Cache"
-      },
-      {
-        "command": "azureCache.refresh",
-        "title": "Refresh",
-        "category": "Azure Cache"
-      },
-      {
-        "command": "azureCache.openInPortal",
-        "title": "Open in Portal",
-        "category": "Azure Cache"
-      },
-      {
-        "command": "azureCache.setKeyFilter",
-        "title": "Set key filter",
-        "category": "Azure Cache",
-        "icon": "$(filter)"
-      },
-      {
-        "command": "azureCache.showStringItem",
-        "title": "Show string item",
-        "category": "Azure Cache"
-      },
-      {
-        "command": "azureCache.showUnsupportedItem",
-        "title": "Show unsupported item",
-        "category": "Azure Cache"
-      },
-      {
-        "command": "azureCache.copyConnectionString",
-        "title": "Copy connection string",
-        "category": "Azure Cache"
-      },
-      {
-        "command": "azureCache.viewCacheProps",
-        "title": "View cache properties",
-        "category": "Azure Cache"
-      },
-      {
-        "command": "azureCache.viewList",
-        "title": "View list",
-        "category": "Azure Cache"
-      },
-      {
-        "command": "azureCache.viewHash",
-        "title": "View hash",
-        "category": "Azure Cache"
-      },
-      {
-        "command": "azureCache.viewSet",
-        "title": "View set",
-        "category": "Azure Cache"
-      },
-      {
-        "command": "azureCache.viewZSet",
-        "title": "View sorted set",
-        "category": "Azure Cache"
-      }
-    ]
+    "views": {
+      "azure": [
+        {
+          "id": "azureCache",
+          "name": "Caches",
+          "icon": "resources/azure-cache.svg"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "azure",
+          "title": "Azure",
+          "icon": "resources/azure.svg"
+        }
+      ]
+    }
+  },
+  "activationEvents": [
+    "onView:azureCache"
+  ],
+  "dependencies": {
+    "@babel/runtime": "7.23.4",
+    "@fluentui/react": "8.112.9",
+    "azure-arm-rediscache": "3.0.0",
+    "ioredis": "5.3.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sinon": "17.0.1",
+    "uuid": "9.0.1",
+    "vscode-azureextensiondev": "0.10.4",
+    "vscode-azureextensionui": "0.33.9"
   },
   "devDependencies": {
     "@babel/core": "7.23.3",
@@ -231,35 +247,19 @@
     "ts-loader": "9.5.1",
     "ts-sinon": "2.0.2",
     "typescript": "5.3.2",
+    "typescript-esbuild": "0.3.1",
     "vsce": "1.77.0",
     "vscode-test": "1.4.0",
     "webpack": "5.89.0",
-    "webpack-cli": "5.1.4",
-    "typescript-esbuild": "0.3.1"
-  },
-  "dependencies": {
-    "@babel/runtime": "7.23.4",
-    "@fluentui/react": "8.112.9",
-    "azure-arm-rediscache": "3.0.0",
-    "ioredis": "5.3.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "sinon": "17.0.1",
-    "uuid": "9.0.1",
-    "vscode-azureextensiondev": "0.10.4",
-    "vscode-azureextensionui": "0.33.9"
+    "webpack-cli": "5.1.4"
   },
   "extensionDependencies": [
     "ms-vscode.azure-account"
   ],
-  "type": "module",
-  "private": "false",
   "publishConfig": {
     "access": "public"
   },
-  "author": {
-    "name": "Nikola Hristov",
-    "email": "nikola@nikolahristov.tech",
-    "url": "https://nikolahristov.tech"
-  }
+  "icon": "resources/azure-cache.png",
+  "preview": true,
+  "aiKey": "AIF-00000000-0000-0000-0000-000000000000"
 }
