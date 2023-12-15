@@ -2,7 +2,7 @@
 	"name": "vscode-azurecache",
 	"displayName": "Azure Cache",
 	"version": "0.0.1",
-	"private": "false",
+	"private": false,
 	"description": "Manage and browse through data in your Azure Caches.",
 	"homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
 	"bugs": {
