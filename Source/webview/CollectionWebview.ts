@@ -18,7 +18,7 @@ export class CollectionWebview extends BaseWebview {
 
 	constructor(
 		private readonly parent: CollectionKeyItem,
-		private readonly type: SupportedKeyType
+		private readonly type: SupportedKeyType,
 	) {
 		super();
 	}
@@ -33,7 +33,7 @@ export class CollectionWebview extends BaseWebview {
 		this.postMessage(WebviewCommand.KeyName, this.parent.key);
 		this.postMessage(
 			WebviewCommand.CollectionSize,
-			await this.parent.getSize()
+			await this.parent.getSize(),
 		);
 		await this.loadAndSendNextChildren(true);
 	}
@@ -43,7 +43,7 @@ export class CollectionWebview extends BaseWebview {
 	 * @param message Webview message
 	 */
 	protected async onDidReceiveMessage(
-		message: WebviewMessage
+		message: WebviewMessage,
 	): Promise<void> {
 		if (message.command === WebviewCommand.LoadMore) {
 			// Load more elements, continuing from previous scan

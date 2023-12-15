@@ -19,7 +19,7 @@ interface Props {
 	isLoading: boolean;
 	onChange: (
 		event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
-		newValue?: string | undefined
+		newValue?: string | undefined,
 	) => void;
 }
 
@@ -32,7 +32,7 @@ export class HashFilterField extends React.Component<Props> {
 	debouncedOnChange: ICancelable<
 		(
 			event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
-			newValue?: string | undefined
+			newValue?: string | undefined,
 		) => void
 	> &
 		(() => void);
@@ -45,7 +45,7 @@ export class HashFilterField extends React.Component<Props> {
 
 	onWrapDefaultLabelRenderer = (
 		props: ITextFieldProps | undefined,
-		defaultRender: IRenderFunction<ITextFieldProps> | undefined
+		defaultRender: IRenderFunction<ITextFieldProps> | undefined,
 	): JSX.Element | null => {
 		if (!props || !defaultRender) {
 			return null;

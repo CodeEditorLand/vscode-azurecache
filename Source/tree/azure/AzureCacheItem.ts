@@ -42,7 +42,7 @@ export class AzureCacheItem
 	constructor(
 		parent: AzureSubscriptionTreeItem,
 		readonly resClient: RedisResourceClient,
-		public parsedRedisResource: ParsedRedisResource
+		public parsedRedisResource: ParsedRedisResource,
 	) {
 		super(parent);
 		this.filterExpr = "*";
@@ -69,7 +69,7 @@ export class AzureCacheItem
 	get iconPath(): TreeItemIconPath {
 		return path.join(
 			ExtVars.context.asAbsolutePath("resources"),
-			"azure-cache.svg"
+			"azure-cache.svg",
 		);
 	}
 
@@ -83,11 +83,11 @@ export class AzureCacheItem
 
 	public async loadMoreChildrenImpl(
 		clearCache: boolean,
-		context: IActionContext
+		context: IActionContext,
 	): Promise<AzExtTreeItem[]> {
 		const client = await RedisClient.connectToRedisResource(
 			this.parsedRedisResource,
-			true
+			true,
 		);
 
 		if (this.isClustered) {
@@ -102,8 +102,8 @@ export class AzureCacheItem
 							this,
 							this.onFilterChangeEmitter,
 							nodeId,
-							port
-						)
+							port,
+						),
 					);
 				}
 			}
@@ -127,7 +127,7 @@ export class AzureCacheItem
 
 			// Extract DB number (e.g. 'db20' to 20)
 			const activeDbs = matches.map((match) =>
-				parseInt(match.split("db")[1])
+				parseInt(match.split("db")[1]),
 			);
 			// Map DB numbers to TreeItems
 			const treeItems = activeDbs.map((db) => new RedisDbItem(this, db));
@@ -141,7 +141,7 @@ export class AzureCacheItem
 
 	public compareChildrenImpl(
 		item1: AzExtTreeItem,
-		item2: AzExtTreeItem
+		item2: AzExtTreeItem,
 	): number {
 		// Always place the filter tree item as the first item
 		if (item1 instanceof KeyFilterItem) {
@@ -167,7 +167,7 @@ export class AzureCacheItem
 		const { name, resourceGroup } = this.parsedRedisResource;
 		this.parsedRedisResource = await this.resClient.getRedisResourceByName(
 			resourceGroup,
-			name
+			name,
 		);
 		// Refresh webview (if open) with the new ParsedRedisResource
 		await this.webview.refresh(this.parsedRedisResource);
@@ -187,7 +187,7 @@ export class AzureCacheItem
 	public showCacheProperties(): void {
 		this.webview.reveal(
 			this.parsedRedisResource.name,
-			this.parsedRedisResource
+			this.parsedRedisResource,
 		);
 	}
 

@@ -22,7 +22,7 @@ interface Props {
 const onRenderCell = (
 	nestingDepth?: number,
 	item?: string,
-	itemIndex?: number
+	itemIndex?: number,
 ): JSX.Element => {
 	return (
 		<div style={{ marginLeft: "48px", marginTop: "8px" }}>
@@ -33,7 +33,7 @@ const onRenderCell = (
 
 const onRenderHeader: IRenderFunction<IGroupHeaderProps> = (
 	headerProps?: IGroupDividerProps,
-	defaultRender?: IRenderFunction<IGroupHeaderProps>
+	defaultRender?: IRenderFunction<IGroupHeaderProps>,
 ) => {
 	if (!defaultRender) {
 		return null;

@@ -47,7 +47,7 @@ export class RedisZSetItem extends CollectionKeyItem {
 
 	public async getSize(): Promise<number> {
 		const client = await RedisClient.connectToRedisResource(
-			this.parsedRedisResource
+			this.parsedRedisResource,
 		);
 		return client.zcard(this.key, this.db);
 	}
@@ -56,10 +56,10 @@ export class RedisZSetItem extends CollectionKeyItem {
 	 * Loads additional sorted set elements as children by running the ZRANGE command and keeping track of the current cursor.
 	 */
 	public async loadNextChildren(
-		clearCache: boolean
+		clearCache: boolean,
 	): Promise<CollectionElement[]> {
 		const client = await RedisClient.connectToRedisResource(
-			this.parsedRedisResource
+			this.parsedRedisResource,
 		);
 
 		if (clearCache) {
@@ -76,13 +76,13 @@ export class RedisZSetItem extends CollectionKeyItem {
 		const maxIndex =
 			Math.min(
 				this.elementsShown + RedisZSetItem.incrementCount,
-				this.length
+				this.length,
 			) - 1;
 		const scannedElems = await client.zrange(
 			this.key,
 			minIndex,
 			maxIndex,
-			this.db
+			this.db,
 		);
 		const collectionElements: CollectionElement[] = [];
 

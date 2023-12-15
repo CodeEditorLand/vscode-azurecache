@@ -23,7 +23,7 @@ export class AzureSubscriptionTreeItem extends SubscriptionTreeItemBase {
 
 	public async loadMoreChildrenImpl(
 		clearCache: boolean,
-		_context: IActionContext
+		_context: IActionContext,
 	): Promise<AzureCacheItem[]> {
 		if (clearCache) {
 			this.nextLink = undefined;
@@ -39,7 +39,7 @@ export class AzureSubscriptionTreeItem extends SubscriptionTreeItemBase {
 
 		return redisCollection.map(
 			(parsedRedisResource) =>
-				new AzureCacheItem(this, resClient, parsedRedisResource)
+				new AzureCacheItem(this, resClient, parsedRedisResource),
 		);
 	}
 }

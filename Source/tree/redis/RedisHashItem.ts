@@ -51,7 +51,7 @@ export class RedisHashItem
 
 	public async getSize(): Promise<number> {
 		const client = await RedisClient.connectToRedisResource(
-			this.parsedRedisResource
+			this.parsedRedisResource,
 		);
 		return client.hlen(this.key, this.db);
 	}
@@ -60,7 +60,7 @@ export class RedisHashItem
 	 * Loads additional hash elements as children by running the HSCAN command and keeping track of the current cursor.
 	 */
 	public async loadNextChildren(
-		clearCache: boolean
+		clearCache: boolean,
 	): Promise<CollectionElement[]> {
 		if (clearCache) {
 			this.scanCursor = "0";
@@ -71,7 +71,7 @@ export class RedisHashItem
 		}
 
 		const client = await RedisClient.connectToRedisResource(
-			this.parsedRedisResource
+			this.parsedRedisResource,
 		);
 
 		let curCursor = this.scanCursor;
@@ -85,7 +85,7 @@ export class RedisHashItem
 				curCursor,
 				"MATCH",
 				this.filterExpr,
-				this.db
+				this.db,
 			);
 			curCursor = result[0];
 			scannedFields.push(...result[1]);

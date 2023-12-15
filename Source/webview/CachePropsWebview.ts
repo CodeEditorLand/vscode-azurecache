@@ -20,7 +20,7 @@ export class CachePropsWebview extends BaseWebview {
 	 * @param parsedRedisResource The Redis resource
 	 */
 	public async refresh(
-		parsedRedisResource: ParsedRedisResource
+		parsedRedisResource: ParsedRedisResource,
 	): Promise<void> {
 		if (!this.webviewPanel) {
 			return;
@@ -44,20 +44,20 @@ export class CachePropsWebview extends BaseWebview {
      * @param parsedRedisResource The Redis resource
      */
 	protected async sendData(
-		parsedRedisResource: ParsedRedisResource
+		parsedRedisResource: ParsedRedisResource,
 	): Promise<void> {
 		this.postMessage(WebviewCommand.View, WebviewView.CacheProperties);
 		this.postMessage(
 			WebviewCommand.ParsedRedisResource,
-			parsedRedisResource
+			parsedRedisResource,
 		);
 		this.postMessage(
 			WebviewCommand.AccessKey,
-			await parsedRedisResource.accessKey
+			await parsedRedisResource.accessKey,
 		);
 		this.postMessage(
 			WebviewCommand.ConnectionString,
-			await getConnectionString(parsedRedisResource)
+			await getConnectionString(parsedRedisResource),
 		);
 	}
 }

@@ -60,7 +60,7 @@ const reactWebviewExports = {
 							"src-webview",
 							"fabric-icons",
 							"fonts",
-							"*.woff"
+							"*.woff",
 						),
 						destination: path.join(__dirname, "dist", "fonts"),
 					},
@@ -78,8 +78,8 @@ const extExports = {
 	entry: "./src/extension.ts",
 	devtool: "source-map",
 	node: {
-		"__filename": false,
-		"__dirname": false,
+		__filename: false,
+		__dirname: false,
 	},
 	output: {
 		path: path.resolve(__dirname, "dist"),
@@ -88,7 +88,7 @@ const extExports = {
 		devtoolModuleFilenameTemplate: "../[resource-path]",
 	},
 	externals: {
-		"vscode": "commonjs vscode",
+		vscode: "commonjs vscode",
 		"applicationinsights-native-metrics":
 			"applicationinsights-native-metrics",
 		"@opentelemetry/tracing": "@opentelemetry/tracing",
@@ -104,14 +104,14 @@ const extExports = {
 							"vscode-azureextensionui",
 							"resources",
 							"**",
-							"*.svg"
+							"*.svg",
 						),
 						destination: path.join(
 							__dirname,
 							"dist",
 							"node_modules",
 							"vscode-azureextensionui",
-							"resources"
+							"resources",
 						),
 					},
 				],

@@ -41,7 +41,7 @@ export class KeyContentProvider implements vscode.TextDocumentContentProvider {
 
 			// Establish connection to cache
 			const client = await RedisClient.connectToRedisResource(
-				this.currentResource
+				this.currentResource,
 			);
 
 			if (type === "string") {
@@ -90,7 +90,7 @@ export class KeyContentProvider implements vscode.TextDocumentContentProvider {
 		key: string,
 		value?: string,
 		subkey?: string,
-		displayedSubkey?: string
+		displayedSubkey?: string,
 	): Promise<void> {
 		this.currentValue = value;
 		this.currentResource = parsedRedisResource;
@@ -100,7 +100,7 @@ export class KeyContentProvider implements vscode.TextDocumentContentProvider {
 			type,
 			key,
 			subkey,
-			displayedSubkey
+			displayedSubkey,
 		);
 		/**
 		 * Without the next line, if the user refreshes a list item after pushing a new element to it, accessing element 0 would
