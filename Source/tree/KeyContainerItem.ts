@@ -18,7 +18,10 @@ export abstract class KeyContainerItem extends AzExtParentTreeItem {
 	 */
 	readonly db?: number;
 
-	constructor(readonly parent: AzureCacheItem, db?: number) {
+	constructor(
+		readonly parent: AzureCacheItem,
+		db?: number
+	) {
 		super(parent);
 		this.parsedRedisResource = parent.parsedRedisResource;
 		this.db = db;

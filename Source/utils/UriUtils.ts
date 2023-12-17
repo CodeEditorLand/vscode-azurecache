@@ -54,7 +54,7 @@ export function createKeyContentUri(
 	type: SupportedKeyType,
 	key: string,
 	subkey?: string,
-	displayedSubkey?: string,
+	displayedSubkey?: string
 ): vscode.Uri {
 	// If displayedSubkey is not provided, then just use subkey
 	displayedSubkey = displayedSubkey ?? subkey;

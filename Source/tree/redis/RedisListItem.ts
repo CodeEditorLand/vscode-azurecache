@@ -47,7 +47,7 @@ export class RedisListItem extends CollectionKeyItem {
 
 	public async getSize(): Promise<number> {
 		const client = await RedisClient.connectToRedisResource(
-			this.parsedRedisResource,
+			this.parsedRedisResource
 		);
 		return client.llen(this.key, this.db);
 	}
@@ -56,10 +56,10 @@ export class RedisListItem extends CollectionKeyItem {
 	 * Loads additional list elements as children by keeping track of the list length and number of elements loaded so far.
 	 */
 	public async loadNextChildren(
-		clearCache: boolean,
+		clearCache: boolean
 	): Promise<CollectionElement[]> {
 		const client = await RedisClient.connectToRedisResource(
-			this.parsedRedisResource,
+			this.parsedRedisResource
 		);
 
 		if (clearCache) {
@@ -76,7 +76,7 @@ export class RedisListItem extends CollectionKeyItem {
 		const max =
 			Math.min(
 				this.elementsShown + RedisListItem.incrementCount,
-				this.size,
+				this.size
 			) - 1;
 		const values = await client.lrange(this.key, min, max, this.db);
 		this.elementsShown += values.length;

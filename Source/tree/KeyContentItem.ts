@@ -27,7 +27,7 @@ export abstract class KeyContentItem extends AzExtTreeItem {
 
 	constructor(
 		readonly parent: RedisDbItem | RedisClusterNodeItem,
-		key: string,
+		key: string
 	) {
 		super(parent);
 		this.parsedRedisResource = parent.parsedRedisResource;

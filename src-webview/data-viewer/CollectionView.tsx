@@ -49,7 +49,7 @@ export class CollectionView extends React.Component<{}, State> {
 							id: elem.id,
 							value: elem.value,
 							selected: false,
-						}) as SelectableCollectionElement,
+						}) as SelectableCollectionElement
 				);
 
 				this.setState((prevState) => ({
@@ -83,7 +83,7 @@ export class CollectionView extends React.Component<{}, State> {
 	 */
 	onItemClick = (
 		element: SelectableCollectionElement,
-		index: number,
+		index: number
 	): void => {
 		// Need to update entire data because FluentUI's Basic List only re-renders based on changes in underlying 'data'
 		const newData = this.state.data.map((val, idx) => {
@@ -128,7 +128,7 @@ export class CollectionView extends React.Component<{}, State> {
 	 */
 	onFilterChanged = (
 		event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
-		newValue?: string | undefined,
+		newValue?: string | undefined
 	): void => {
 		if (this.state.type !== "hash") {
 			return;

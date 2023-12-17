@@ -75,7 +75,7 @@ interface Props {
 export class CollectionList extends React.Component<Props, {}> {
 	onRenderCell = (
 		item: SelectableCollectionElement | undefined,
-		index: number | undefined,
+		index: number | undefined
 	): JSX.Element | null => {
 		if (!item || typeof index === "undefined") {
 			return null;
@@ -106,8 +106,7 @@ export class CollectionList extends React.Component<Props, {}> {
 				className={itemCellClass}
 				data-is-focusable={true}
 				data-is-scrollable={true}
-				onClick={onClick}
-			>
+				onClick={onClick}>
 				<div className={classNames.itemContent}>
 					{header}
 					<div className={classNames.itemName}>{item.value}</div>
@@ -144,8 +143,7 @@ export class CollectionList extends React.Component<Props, {}> {
 					borderStyle: "solid",
 					borderWidth: 1,
 				}}
-				onScroll={this.handleListScroll}
-			>
+				onScroll={this.handleListScroll}>
 				<List items={data} onRenderCell={this.onRenderCell} />
 			</div>
 		);

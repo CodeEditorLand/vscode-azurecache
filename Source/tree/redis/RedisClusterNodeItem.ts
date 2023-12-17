@@ -34,7 +34,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
 		parent: AzureCacheItem & FilterParentItem,
 		filterChangeEmitter: vscode.EventEmitter<void>,
 		readonly nodeId: string,
-		readonly port: number,
+		readonly port: number
 	) {
 		super(parent);
 		this.scanCursor = "0";
@@ -89,7 +89,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
 	 */
 	public async loadMoreChildrenImpl(
 		clearCache: boolean,
-		context: IActionContext,
+		context: IActionContext
 	): Promise<AzExtTreeItem[]> {
 		if (clearCache) {
 			this.scanCursor = "0";
@@ -100,7 +100,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
 		}
 
 		const client = await RedisClient.connectToRedisResource(
-			this.parsedRedisResource,
+			this.parsedRedisResource
 		);
 
 		// Sometimes SCAN returns no results, so continue SCANNING until we receive results or we reach the end
@@ -113,13 +113,13 @@ export class RedisClusterNodeItem extends KeyContainerItem {
 				this.nodeId,
 				curCursor,
 				"MATCH",
-				this.parent.getFilter(),
+				this.parent.getFilter()
 			);
 		} while (curCursor !== "0" && scannedKeys.length === 0);
 
 		this.scanCursor = curCursor === "0" ? undefined : curCursor;
 		const treeItems = await Promise.all(
-			scannedKeys.map((key) => this.createLocalRedisKey(client, key)),
+			scannedKeys.map((key) => this.createLocalRedisKey(client, key))
 		);
 
 		return treeItems;
@@ -131,7 +131,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
 
 	public compareChildrenImpl(
 		item1: AzExtTreeItem,
-		item2: AzExtTreeItem,
+		item2: AzExtTreeItem
 	): number {
 		if (item1 instanceof KeyFilterItem) {
 			return -1;
@@ -144,7 +144,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
 
 	private async createLocalRedisKey(
 		client: RedisClient,
-		key: string,
+		key: string
 	): Promise<AzExtTreeItem> {
 		const type = await client.type(key);
 

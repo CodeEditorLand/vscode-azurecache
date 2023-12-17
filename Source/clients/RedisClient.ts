@@ -47,7 +47,7 @@ export class RedisClient {
 	 */
 	protected constructor(
 		client: IORedis.Redis | IORedis.Cluster,
-		clusterClients?: Map<string, IORedis.Redis>,
+		clusterClients?: Map<string, IORedis.Redis>
 	) {
 		this.clusterNodeIds = clusterClients
 			? Array.from(clusterClients.keys())
@@ -77,7 +77,7 @@ export class RedisClient {
 					const clusterNodeClient = clusterClients?.get(dbOrNodeId);
 					if (!clusterNodeClient) {
 						vscode.window.showErrorMessage(
-							Strings.ErrorNotConnectToShard,
+							Strings.ErrorNotConnectToShard
 						);
 						throw new Error(Strings.ErrorNotConnectToShard);
 					}
@@ -97,7 +97,7 @@ export class RedisClient {
 				disconnect: () => {
 					client.disconnect();
 				},
-			},
+			}
 		);
 
 		/**
@@ -120,7 +120,7 @@ export class RedisClient {
 	 */
 	public static async connectToRedisResource(
 		parsedRedisResource: ParsedRedisResource,
-		ignoreCache = false,
+		ignoreCache = false
 	): Promise<RedisClient> {
 		const existingClient = this.clients.get(parsedRedisResource.resourceId);
 		if (!ignoreCache && existingClient) {
@@ -158,7 +158,7 @@ export class RedisClient {
 
 				if (provisioningState !== "Succeeded") {
 					vscode.window.showWarningMessage(
-						`${Strings.StrCurrentProvStateIs}: ${provisioningState}`,
+						`${Strings.StrCurrentProvStateIs}: ${provisioningState}`
 					);
 				}
 
@@ -169,9 +169,9 @@ export class RedisClient {
 					hostName,
 					password,
 					connectPort,
-					!cluster,
+					!cluster
 				);
-			},
+			}
 		);
 
 		// Memoize client by resource ID
@@ -193,7 +193,7 @@ export class RedisClient {
 		server: string,
 		password: string,
 		port: number,
-		ssl: boolean,
+		ssl: boolean
 	): Promise<RedisClient> {
 		let client: IORedis.Redis | IORedis.Cluster;
 
@@ -218,7 +218,7 @@ export class RedisClient {
 						password: password,
 						tls: ssl ? { host: server, port: port } : undefined,
 					},
-				},
+				}
 			);
 		} else {
 			client = new IORedis(port, server, {
@@ -244,14 +244,14 @@ export class RedisClient {
 				});
 
 				client.on("error", reject);
-			},
+			}
 		);
 
 		client.on("connect", () =>
-			ExtVars.outputChannel.appendLine("Redis connection established"),
+			ExtVars.outputChannel.appendLine("Redis connection established")
 		);
 		client.on("reconnecting", () =>
-			ExtVars.outputChannel.appendLine("Redis connection re-established"),
+			ExtVars.outputChannel.appendLine("Redis connection re-established")
 		);
 
 		// Interval to periodically ping the cache (to avoid timeouts)
@@ -283,7 +283,7 @@ export class RedisClient {
 			vscode.window.showErrorMessage(
 				`Azure Cache error: ${error.message.toString()}\n${
 					Strings.StrPromptRefreshCache
-				}`,
+				}`
 			);
 		});
 
@@ -291,7 +291,7 @@ export class RedisClient {
 	}
 
 	private static async createClusterNodeMap(
-		client: IORedis.Redis | IORedis.Cluster,
+		client: IORedis.Redis | IORedis.Cluster
 	): Promise<Map<string, IORedis.Redis>> {
 		const clusterClients = new Map<string, IORedis.Redis>();
 
@@ -345,10 +345,10 @@ export class RedisClient {
 	}
 
 	public async getClusterNodeOptions(
-		clusterNodeId: string,
+		clusterNodeId: string
 	): Promise<IORedis.RedisOptions> {
 		const client = (await this.getClient(
-			clusterNodeId,
+			clusterNodeId
 		)) as IORedis.Pipeline;
 		return client.options;
 	}
@@ -360,7 +360,7 @@ export class RedisClient {
 	public async lindex(
 		key: string,
 		index: number,
-		db?: number,
+		db?: number
 	): Promise<string> {
 		return this.exec((await this.getClient(db)).lindex(key, index));
 	}
@@ -369,7 +369,7 @@ export class RedisClient {
 		key: string,
 		start: number,
 		stop: number,
-		db?: number,
+		db?: number
 	): Promise<string[]> {
 		return this.exec((await this.getClient(db)).lrange(key, start, stop));
 	}
@@ -382,14 +382,14 @@ export class RedisClient {
 		clusterNodeId: string,
 		cursor: number | string,
 		matchOption: "match" | "MATCH",
-		pattern: string,
+		pattern: string
 	): Promise<[string, string[]]> {
 		return this.exec(
 			(await this.getClient(clusterNodeId)).scan(
 				cursor,
 				matchOption,
-				pattern,
-			),
+				pattern
+			)
 		);
 	}
 
@@ -397,10 +397,10 @@ export class RedisClient {
 		cursor: number | string,
 		matchOption: "match" | "MATCH",
 		pattern: string,
-		db?: number,
+		db?: number
 	): Promise<[string, string[]]> {
 		return this.exec(
-			(await this.getClient(db)).scan(cursor, matchOption, pattern),
+			(await this.getClient(db)).scan(cursor, matchOption, pattern)
 		);
 	}
 
@@ -413,10 +413,10 @@ export class RedisClient {
 		cursor: number | string,
 		matchOption: "match" | "MATCH",
 		pattern: string,
-		db?: number,
+		db?: number
 	): Promise<[string, string[]]> {
 		return this.exec(
-			(await this.getClient(db)).hscan(key, cursor, matchOption, pattern),
+			(await this.getClient(db)).hscan(key, cursor, matchOption, pattern)
 		);
 	}
 
@@ -429,10 +429,10 @@ export class RedisClient {
 		cursor: number | string,
 		matchOption: "match" | "MATCH",
 		pattern: string,
-		db?: number,
+		db?: number
 	): Promise<[string, string[]]> {
 		return this.exec(
-			(await this.getClient(db)).sscan(key, cursor, matchOption, pattern),
+			(await this.getClient(db)).sscan(key, cursor, matchOption, pattern)
 		);
 	}
 
@@ -441,10 +441,10 @@ export class RedisClient {
 		cursor: number | string,
 		matchOption: "match" | "MATCH",
 		pattern: string,
-		db?: number,
+		db?: number
 	): Promise<[string, string[]]> {
 		return this.exec(
-			(await this.getClient(db)).zscan(key, cursor, matchOption, pattern),
+			(await this.getClient(db)).zscan(key, cursor, matchOption, pattern)
 		);
 	}
 
@@ -456,10 +456,10 @@ export class RedisClient {
 		key: string,
 		start: number,
 		stop: number,
-		db?: number,
+		db?: number
 	): Promise<string[]> {
 		return this.exec(
-			(await this.getClient(db)).zrange(key, start, stop, "WITHSCORES"),
+			(await this.getClient(db)).zrange(key, start, stop, "WITHSCORES")
 		);
 	}
 

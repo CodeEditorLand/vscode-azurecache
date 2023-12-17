@@ -82,8 +82,7 @@ export class CopyableTextField extends React.Component<Props, State> {
 						id={this.props.id}
 						calloutProps={tooltipProps}
 						delay={TooltipDelay.zero}
-						styles={tooltipStyles}
-					>
+						styles={tooltipStyles}>
 						<CopyButton
 							onClick={this.onClick}
 							onMouseLeave={this.onMouseLeave}

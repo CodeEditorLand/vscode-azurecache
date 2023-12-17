@@ -10,7 +10,7 @@ import { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
  * @param accessKey The access key/password
  */
 export async function getConnectionString(
-	parsedRedisResource: ParsedRedisResource,
+	parsedRedisResource: ParsedRedisResource
 ): Promise<string | undefined> {
 	const accessKey = await parsedRedisResource.accessKey;
 	if (!accessKey) {

@@ -6,6 +6,6 @@ import { IIconOptions } from "@uifabric/styling";
 
 export function initializeIcons(baseUrl = "", options?: IIconOptions): void {
 	[i].forEach((initialize: (url: string, options?: IIconOptions) => void) =>
-		initialize(baseUrl, options),
+		initialize(baseUrl, options)
 	);
 }

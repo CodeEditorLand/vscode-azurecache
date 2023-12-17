@@ -34,7 +34,7 @@ interface Item {
 const onRenderCell = (
 	nestingDepth?: number,
 	item?: Item,
-	itemIndex?: number,
+	itemIndex?: number
 ): JSX.Element => {
 	return (
 		<div style={{ marginLeft: "48px" }}>
@@ -54,7 +54,7 @@ const onRenderCell = (
 
 const onRenderHeader: IRenderFunction<IGroupHeaderProps> = (
 	headerProps?: IGroupDividerProps,
-	defaultRender?: IRenderFunction<IGroupHeaderProps>,
+	defaultRender?: IRenderFunction<IGroupHeaderProps>
 ) => {
 	if (!defaultRender) {
 		return null;

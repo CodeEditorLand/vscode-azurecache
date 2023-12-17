@@ -46,7 +46,7 @@ export class RedisSetItem extends CollectionKeyItem {
 
 	public async getSize(): Promise<number> {
 		const client = await RedisClient.connectToRedisResource(
-			this.parsedRedisResource,
+			this.parsedRedisResource
 		);
 		return client.scard(this.key, this.db);
 	}
@@ -55,7 +55,7 @@ export class RedisSetItem extends CollectionKeyItem {
 	 * Loads additional set elements as children by running the SSCAN command and keeping track of the current cursor.
 	 */
 	public async loadNextChildren(
-		clearCache: boolean,
+		clearCache: boolean
 	): Promise<CollectionElement[]> {
 		if (clearCache) {
 			this.scanCursor = "0";
@@ -66,7 +66,7 @@ export class RedisSetItem extends CollectionKeyItem {
 		}
 
 		const client = await RedisClient.connectToRedisResource(
-			this.parsedRedisResource,
+			this.parsedRedisResource
 		);
 
 		// Sometimes SCAN returns no results, so continue SCANNING until we receive results or we reach the end
@@ -79,7 +79,7 @@ export class RedisSetItem extends CollectionKeyItem {
 				curCursor,
 				"MATCH",
 				"*",
-				this.db,
+				this.db
 			);
 			curCursor = result[0];
 			scannedElems.push(...result[1]);
