@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+import { ReadStream } from "fs";
 // Copied from vscode-azure-account/src/azure-account.api.d.ts
 import { SubscriptionModels } from "azure-arm-resource";
-import { ReadStream } from "fs";
 import { ServiceClientCredentials } from "ms-rest";
 import { AzureEnvironment } from "ms-rest-azure";
 import { CancellationToken, Event, Progress, Terminal } from "vscode";
@@ -60,6 +60,6 @@ export interface CloudShell {
 	readonly uploadFile: (
 		filename: string,
 		stream: ReadStream,
-		options?: UploadOptions
+		options?: UploadOptions,
 	) => Promise<void>;
 }

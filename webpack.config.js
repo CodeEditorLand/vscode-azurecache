@@ -60,7 +60,7 @@ const reactWebviewExports = {
 							"src-webview",
 							"fabric-icons",
 							"fonts",
-							"*.woff"
+							"*.woff",
 						),
 						destination: path.join(__dirname, "dist", "fonts"),
 					},
@@ -104,14 +104,14 @@ const extExports = {
 							"vscode-azureextensionui",
 							"resources",
 							"**",
-							"*.svg"
+							"*.svg",
 						),
 						destination: path.join(
 							__dirname,
 							"dist",
 							"node_modules",
 							"vscode-azureextensionui",
-							"resources"
+							"resources",
 						),
 					},
 				],

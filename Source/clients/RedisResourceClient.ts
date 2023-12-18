@@ -6,11 +6,11 @@ import {
 	RedisListResult,
 	RedisResource,
 } from "azure-arm-rediscache/lib/models";
-import { ExtVars } from "../ExtensionVariables";
-import { ParsedRedisListResult } from "../parsed/ParsedRedisListResult";
 import { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
-import { ParsedResourceId } from "../parsed/ParsedResourceId";
+import { ExtVars } from "../ExtensionVariables";
 import * as Strings from "../Strings";
+import { ParsedRedisListResult } from "../parsed/ParsedRedisListResult";
+import { ParsedResourceId } from "../parsed/ParsedResourceId";
 
 /**
  * Type guard to ensure given value is defined.
@@ -35,7 +35,7 @@ export class RedisResourceClient {
 	 * @param resourceId The resource ID
 	 */
 	public getRedisResourceById(
-		resourceId: string
+		resourceId: string,
 	): Promise<ParsedRedisResource> {
 		const { resourceGroup, name } = this.parseResourceId(resourceId);
 		return this.getRedisResourceByName(resourceGroup, name);
@@ -48,11 +48,11 @@ export class RedisResourceClient {
 	 */
 	public async getRedisResourceByName(
 		resourceGroup: string,
-		name: string
+		name: string,
 	): Promise<ParsedRedisResource> {
 		const redisResource = await this.rmClient.redis.get(
 			resourceGroup,
-			name
+			name,
 		);
 		return this.parseRedisResource(redisResource);
 	}
@@ -64,12 +64,12 @@ export class RedisResourceClient {
 	 */
 	public async getAccessKey(
 		resourceGroup: string,
-		name: string
+		name: string,
 	): Promise<string | undefined> {
 		try {
 			const allAccessKeys = await this.rmClient.redis.listKeys(
 				resourceGroup,
-				name
+				name,
 			);
 			// Use the primary key or secondary key, whichever exists
 			const accessKey =
@@ -93,7 +93,7 @@ export class RedisResourceClient {
 	 * @param nextLink The NextLink from the previous successful list resources operation.
 	 */
 	public async listNextResources(
-		nextLink: string
+		nextLink: string,
 	): Promise<ParsedRedisListResult> {
 		const resources = await this.rmClient.redis.listNext(nextLink);
 		return this.parseRedisListResult(resources);
@@ -104,7 +104,7 @@ export class RedisResourceClient {
 	 * @param resources Response of a list Redis operation
 	 */
 	private async parseRedisListResult(
-		resources: RedisListResult
+		resources: RedisListResult,
 	): Promise<ParsedRedisListResult> {
 		const parsedResources: ParsedRedisResource[] = [];
 
@@ -121,7 +121,7 @@ export class RedisResourceClient {
 		// Since the list/listNext methods are paginated, augment the list with nextLink (the next page of results)
 		const listResult: ParsedRedisListResult = Object.assign(
 			parsedResources,
-			{ nextLink: resources.nextLink }
+			{ nextLink: resources.nextLink },
 		);
 		return listResult;
 	}
@@ -133,7 +133,7 @@ export class RedisResourceClient {
 	 * @param redisResource RedisResource
 	 */
 	private async parseRedisResource(
-		redisResource: RedisResource
+		redisResource: RedisResource,
 	): Promise<ParsedRedisResource> {
 		if (!redisResource.id) {
 			throw new Error(Strings.ErrorMissingResourceId);
@@ -160,7 +160,7 @@ export class RedisResourceClient {
 		}
 
 		const { name, resourceGroup, subscriptionId } = this.parseResourceId(
-			redisResource.id
+			redisResource.id,
 		);
 		const accessKey = this.getAccessKey(resourceGroup, name);
 		const linkedServers = redisResource.linkedServers;

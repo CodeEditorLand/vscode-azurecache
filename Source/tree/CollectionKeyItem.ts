@@ -27,7 +27,7 @@ export abstract class CollectionKeyItem extends AzExtTreeItem {
 
 	constructor(
 		readonly parent: RedisDbItem | RedisClusterNodeItem,
-		readonly key: string
+		readonly key: string,
 	) {
 		super(parent);
 		this.parsedRedisResource = parent.parsedRedisResource;
@@ -45,6 +45,6 @@ export abstract class CollectionKeyItem extends AzExtTreeItem {
 	public abstract getSize(): Promise<number>;
 	public abstract hasNextChildren(): boolean;
 	public abstract loadNextChildren(
-		clearCache: boolean
+		clearCache: boolean,
 	): Promise<CollectionElement[]>;
 }

@@ -68,11 +68,11 @@ export class CopyableTextField extends React.Component<Props, State> {
 			: StrCopyToClipboard;
 
 		return (
-			<Stack horizontal tokens={stackTokens}>
-				<Stack.Item grow align="end">
+			<Stack horizontal={true} tokens={stackTokens}>
+				<Stack.Item grow={true} align="end">
 					<TextField
 						label={this.props.label}
-						readOnly
+						readOnly={true}
 						value={value}
 					/>
 				</Stack.Item>
@@ -82,7 +82,8 @@ export class CopyableTextField extends React.Component<Props, State> {
 						id={this.props.id}
 						calloutProps={tooltipProps}
 						delay={TooltipDelay.zero}
-						styles={tooltipStyles}>
+						styles={tooltipStyles}
+					>
 						<CopyButton
 							onClick={this.onClick}
 							onMouseLeave={this.onMouseLeave}

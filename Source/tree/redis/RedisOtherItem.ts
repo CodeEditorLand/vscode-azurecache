@@ -17,7 +17,7 @@ export class RedisOtherItem extends KeyContentItem {
 	constructor(
 		parent: RedisDbItem | RedisClusterNodeItem,
 		key: string,
-		private readonly type: string
+		private readonly type: string,
 	) {
 		super(parent, key);
 	}

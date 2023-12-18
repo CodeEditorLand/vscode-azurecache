@@ -3,9 +3,9 @@
 
 import { ThemeIcon } from "vscode";
 import {
+	AzExtParentTreeItem,
 	AzExtTreeItem,
 	TreeItemIconPath,
-	AzExtParentTreeItem,
 } from "vscode-azureextensionui";
 import { StrKeyFilter } from "../../Strings";
 import { FilterParentItem } from "../FilterParentItem";

@@ -7,11 +7,11 @@ import {
 	IActionContext,
 	TreeItemIconPath,
 } from "vscode-azureextensionui";
-import { RedisClient } from "../../clients/RedisClient";
 import { StrDatabaseAbbrv } from "../../Strings";
-import { KeyFilterItem } from "../filter/KeyFilterItem";
+import { RedisClient } from "../../clients/RedisClient";
 import { FilterParentItem } from "../FilterParentItem";
 import { KeyContainerItem } from "../KeyContainerItem";
+import { KeyFilterItem } from "../filter/KeyFilterItem";
 import { RedisHashItem } from "./RedisHashItem";
 import { RedisListItem } from "./RedisListItem";
 import { RedisOtherItem } from "./RedisOtherItem";
@@ -45,7 +45,7 @@ export class RedisDbItem extends KeyContainerItem implements FilterParentItem {
 	 */
 	public async loadMoreChildrenImpl(
 		clearCache: boolean,
-		context: IActionContext
+		context: IActionContext,
 	): Promise<AzExtTreeItem[]> {
 		if (clearCache) {
 			this.scanCursor = "0";
@@ -56,7 +56,7 @@ export class RedisDbItem extends KeyContainerItem implements FilterParentItem {
 		}
 
 		const client = await RedisClient.connectToRedisResource(
-			this.parsedRedisResource
+			this.parsedRedisResource,
 		);
 
 		// Sometimes SCAN returns no results, so continue SCANNING until we receive results or we reach the end
@@ -69,15 +69,15 @@ export class RedisDbItem extends KeyContainerItem implements FilterParentItem {
 				curCursor,
 				"MATCH",
 				this.filterExpr,
-				this.db
+				this.db,
 			);
 		} while (curCursor !== "0" && scannedKeys.length === 0);
 
 		this.scanCursor = curCursor === "0" ? undefined : curCursor;
 		const treeItems = await Promise.all(
 			scannedKeys.map(async (key) =>
-				this.createLocalRedisKey(client, key)
-			)
+				this.createLocalRedisKey(client, key),
+			),
 		);
 
 		if (clearCache || this.scanCursor === "0") {
@@ -93,7 +93,7 @@ export class RedisDbItem extends KeyContainerItem implements FilterParentItem {
 
 	public compareChildrenImpl(
 		item1: AzExtTreeItem,
-		item2: AzExtTreeItem
+		item2: AzExtTreeItem,
 	): number {
 		if (item1 instanceof KeyFilterItem) {
 			return -1;
@@ -106,7 +106,7 @@ export class RedisDbItem extends KeyContainerItem implements FilterParentItem {
 
 	private async createLocalRedisKey(
 		client: RedisClient,
-		key: string
+		key: string,
 	): Promise<AzExtTreeItem> {
 		const type = await client.type(key, this.db);
 

@@ -3,9 +3,9 @@
 
 import { RedisManagementClient } from "azure-arm-rediscache";
 import {
-	createAzureClient,
 	IActionContext,
 	SubscriptionTreeItemBase,
+	createAzureClient,
 } from "vscode-azureextensionui";
 import { RedisResourceClient } from "../../clients/RedisResourceClient";
 import { ParsedRedisListResult } from "../../parsed/ParsedRedisListResult";
@@ -23,7 +23,7 @@ export class AzureSubscriptionTreeItem extends SubscriptionTreeItemBase {
 
 	public async loadMoreChildrenImpl(
 		clearCache: boolean,
-		_context: IActionContext
+		_context: IActionContext,
 	): Promise<AzureCacheItem[]> {
 		if (clearCache) {
 			this.nextLink = undefined;
@@ -39,7 +39,7 @@ export class AzureSubscriptionTreeItem extends SubscriptionTreeItemBase {
 
 		return redisCollection.map(
 			(parsedRedisResource) =>
-				new AzureCacheItem(this, resClient, parsedRedisResource)
+				new AzureCacheItem(this, resClient, parsedRedisResource),
 		);
 	}
 }

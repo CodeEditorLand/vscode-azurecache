@@ -62,7 +62,7 @@ export abstract class BaseWebview {
 	 */
 	private async createWebviewPanel(
 		title: string,
-		data: unknown
+		data: unknown,
 	): Promise<void> {
 		this.webviewPanel = vscode.window.createWebviewPanel(
 			this.viewType,
@@ -73,17 +73,17 @@ export abstract class BaseWebview {
 				retainContextWhenHidden: true,
 				localResourceRoots: [
 					vscode.Uri.file(
-						path.join(ExtVars.context.extensionPath, "dist")
+						path.join(ExtVars.context.extensionPath, "dist"),
 					),
 				],
-			}
+			},
 		);
 
 		this.webviewPanel.webview.html = this.getHtml();
 
 		// Pass the vscode-resource URI of the 'fonts' directory
 		const fontPathUri = vscode.Uri.file(
-			path.join(ExtVars.context.extensionPath, "dist", "fonts")
+			path.join(ExtVars.context.extensionPath, "dist", "fonts"),
 		);
 		const fontPathWebviewUri = this.webviewPanel.webview
 			.asWebviewUri(fontPathUri)
@@ -95,7 +95,7 @@ export abstract class BaseWebview {
 
 		// Listen for messages from webview
 		this.webviewPanel.webview.onDidReceiveMessage((message) =>
-			this.onDidReceiveMessage(message)
+			this.onDidReceiveMessage(message),
 		);
 
 		this.webviewPanel.onDidDispose(() => {
@@ -130,7 +130,7 @@ export abstract class BaseWebview {
 
 		const webview = this.webviewPanel.webview;
 		const scriptPathOnDisk = vscode.Uri.file(
-			path.join(ExtVars.context.extensionPath, "dist", "webview.js")
+			path.join(ExtVars.context.extensionPath, "dist", "webview.js"),
 		);
 		const scriptUri = webview.asWebviewUri(scriptPathOnDisk);
 		const nonce = this.generateNonce();

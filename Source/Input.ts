@@ -14,7 +14,7 @@ import { ErrorEmptyInput } from "./Strings";
 export async function textInput(
 	defaultValue: string | undefined,
 	prompt: string,
-	placeholder: string
+	placeholder: string,
 ): Promise<string | undefined> {
 	const val = await vscode.window.showInputBox({
 		ignoreFocusOut: true,

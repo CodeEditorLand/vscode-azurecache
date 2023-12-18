@@ -5,12 +5,12 @@ import {
 	Async,
 	ICancelable,
 	IRenderFunction,
+	IStackTokens,
 	ITextFieldProps,
 	Spinner,
 	SpinnerSize,
 	Stack,
 	TextField,
-	IStackTokens,
 } from "@fluentui/react";
 import * as React from "react";
 import { StrHashFieldFilter } from "../Strings";
@@ -19,7 +19,7 @@ interface Props {
 	isLoading: boolean;
 	onChange: (
 		event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
-		newValue?: string | undefined
+		newValue?: string | undefined,
 	) => void;
 }
 
@@ -32,7 +32,7 @@ export class HashFilterField extends React.Component<Props> {
 	debouncedOnChange: ICancelable<
 		(
 			event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
-			newValue?: string | undefined
+			newValue?: string | undefined,
 		) => void
 	> &
 		(() => void);
@@ -45,14 +45,18 @@ export class HashFilterField extends React.Component<Props> {
 
 	onWrapDefaultLabelRenderer = (
 		props: ITextFieldProps | undefined,
-		defaultRender: IRenderFunction<ITextFieldProps> | undefined
+		defaultRender: IRenderFunction<ITextFieldProps> | undefined,
 	): JSX.Element | null => {
 		if (!props || !defaultRender) {
 			return null;
 		}
 		const { isLoading } = this.props;
 		return (
-			<Stack horizontal verticalAlign="center" tokens={stackTokens}>
+			<Stack
+				horizontal={true}
+				verticalAlign="center"
+				tokens={stackTokens}
+			>
 				<span>{defaultRender(props)}</span>
 				{isLoading && <Spinner size={SpinnerSize.small} />}
 			</Stack>

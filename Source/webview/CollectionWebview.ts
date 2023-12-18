@@ -1,14 +1,14 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { BaseWebview } from "./BaseWebview";
-import { CollectionKeyItem } from "../tree/CollectionKeyItem";
-import { SupportedKeyType } from "../SupportedKeyType";
 import { CollectionWebviewData } from "../../src-shared/CollectionWebviewData";
-import { RedisHashItem } from "../tree/redis/RedisHashItem";
 import { WebviewCommand } from "../../src-shared/WebviewCommand";
 import { WebviewMessage } from "../../src-shared/WebviewMessage";
 import { WebviewView } from "../../src-shared/WebviewView";
+import { SupportedKeyType } from "../SupportedKeyType";
+import { CollectionKeyItem } from "../tree/CollectionKeyItem";
+import { RedisHashItem } from "../tree/redis/RedisHashItem";
+import { BaseWebview } from "./BaseWebview";
 
 /**
  * Webview for viewing collection type keys (lists, hashes, sets, zsets).
@@ -18,7 +18,7 @@ export class CollectionWebview extends BaseWebview {
 
 	constructor(
 		private readonly parent: CollectionKeyItem,
-		private readonly type: SupportedKeyType
+		private readonly type: SupportedKeyType,
 	) {
 		super();
 	}
@@ -33,7 +33,7 @@ export class CollectionWebview extends BaseWebview {
 		this.postMessage(WebviewCommand.KeyName, this.parent.key);
 		this.postMessage(
 			WebviewCommand.CollectionSize,
-			await this.parent.getSize()
+			await this.parent.getSize(),
 		);
 		await this.loadAndSendNextChildren(true);
 	}
@@ -43,7 +43,7 @@ export class CollectionWebview extends BaseWebview {
 	 * @param message Webview message
 	 */
 	protected async onDidReceiveMessage(
-		message: WebviewMessage
+		message: WebviewMessage,
 	): Promise<void> {
 		if (message.command === WebviewCommand.LoadMore) {
 			// Load more elements, continuing from previous scan

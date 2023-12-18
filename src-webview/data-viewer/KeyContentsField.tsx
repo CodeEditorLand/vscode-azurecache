@@ -17,9 +17,9 @@ export function KeyContentsField(props: Props): React.ReactElement {
 				className="contents-field"
 				inputClassName="contents-input"
 				label={StrContents}
-				multiline
-				autoAdjustHeight
-				readOnly
+				multiline={true}
+				autoAdjustHeight={true}
+				readOnly={true}
 				value={props.value}
 				resizable={false}
 			/>
