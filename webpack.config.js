@@ -10,7 +10,7 @@ const webpack = require("webpack");
 
 const DEBUG_WEBPACK = !!process.env.DEBUG_WEBPACK;
 
-console.log("DEBUG_WEBPACK: " + DEBUG_WEBPACK);
+console.log(`DEBUG_WEBPACK: ${DEBUG_WEBPACK}`);
 
 const reactWebviewExports = {
 	entry: "./src-webview/Index",

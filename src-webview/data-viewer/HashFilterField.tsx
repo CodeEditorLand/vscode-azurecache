@@ -47,7 +47,7 @@ export class HashFilterField extends React.Component<Props> {
 		props: ITextFieldProps | undefined,
 		defaultRender: IRenderFunction<ITextFieldProps> | undefined,
 	): JSX.Element | null => {
-		if (!props || !defaultRender) {
+		if (!(props && defaultRender)) {
 			return null;
 		}
 		const { isLoading } = this.props;

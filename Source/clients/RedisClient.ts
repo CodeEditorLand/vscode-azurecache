@@ -122,7 +122,9 @@ export class RedisClient {
 		parsedRedisResource: ParsedRedisResource,
 		ignoreCache = false,
 	): Promise<RedisClient> {
-		const existingClient = this.clients.get(parsedRedisResource.resourceId);
+		const existingClient = RedisClient.clients.get(
+			parsedRedisResource.resourceId,
+		);
 		if (!ignoreCache && existingClient) {
 			return existingClient;
 		}
@@ -164,7 +166,7 @@ export class RedisClient {
 
 				// TODO: Support connecting over SSL (bug in IORedis)
 				const connectPort = cluster ? port : sslPort;
-				return this.connect(
+				return RedisClient.connect(
 					cluster,
 					hostName,
 					password,
@@ -175,7 +177,7 @@ export class RedisClient {
 		);
 
 		// Memoize client by resource ID
-		this.clients.set(parsedRedisResource.resourceId, newRedisClient);
+		RedisClient.clients.set(parsedRedisResource.resourceId, newRedisClient);
 		return newRedisClient;
 	}
 

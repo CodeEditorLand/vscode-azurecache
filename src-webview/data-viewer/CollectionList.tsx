@@ -83,10 +83,10 @@ export class CollectionList extends React.Component<Props, {}> {
 
 		const itemCellClass =
 			classNames.itemCell +
-			(item.selected ? " " + classNames.itemSelected : "");
+			(item.selected ? ` ${classNames.itemSelected}` : "");
 		const itemIndexClass =
 			classNames.itemIndex +
-			(item.selected ? " " + classNames.itemIndexSelected : "");
+			(item.selected ? ` ${classNames.itemIndexSelected}` : "");
 		const onClick = (): void => this.props.onItemClick?.(item, index);
 
 		let header = null;
