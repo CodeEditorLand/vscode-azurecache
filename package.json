@@ -200,7 +200,7 @@
 		"onView:azureCache"
 	],
 	"dependencies": {
-		"@babel/runtime": "7.23.6",
+		"@babel/runtime": "7.23.7",
 		"@fluentui/react": "8.114.0",
 		"azure-arm-rediscache": "3.0.0",
 		"ioredis": "5.3.2",
@@ -212,16 +212,16 @@
 		"vscode-azureextensionui": "0.33.9"
 	},
 	"devDependencies": {
-		"@babel/core": "7.23.6",
+		"@babel/core": "7.23.7",
 		"@babel/plugin-proposal-class-properties": "7.10.4",
-		"@babel/plugin-transform-runtime": "7.23.6",
-		"@babel/preset-env": "7.23.6",
+		"@babel/plugin-transform-runtime": "7.23.7",
+		"@babel/preset-env": "7.23.7",
 		"@babel/preset-react": "7.23.3",
 		"@babel/preset-typescript": "7.23.3",
 		"@types/glob": "8.1.0",
 		"@types/ioredis": "4.28.10",
 		"@types/mocha": "10.0.6",
-		"@types/node": "20.10.5",
+		"@types/node": "20.10.6",
 		"@types/react": "18.2.46",
 		"@types/react-dom": "18.2.18",
 		"@types/sinon": "17.0.2",
