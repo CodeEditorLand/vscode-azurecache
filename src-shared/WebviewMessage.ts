@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { WebviewCommand } from "./WebviewCommand";
+import type { WebviewCommand } from "./WebviewCommand";
 
 /**
  * Represents data passed between the extension and webview.

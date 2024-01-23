@@ -2,9 +2,9 @@
 // Licensed under the MIT License.
 
 import * as vscode from "vscode";
-import { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
+import type { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
 import { WebviewCommand } from "../../src-shared/WebviewCommand";
-import { WebviewMessage } from "../../src-shared/WebviewMessage";
+import type { WebviewMessage } from "../../src-shared/WebviewMessage";
 import { WebviewView } from "../../src-shared/WebviewView";
 import { getConnectionString } from "../utils/ResourceUtils";
 import { BaseWebview } from "./BaseWebview";

@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import * as path from "path";
+import * as path from "node:path";
 import * as vscode from "vscode";
 import { WebviewCommand } from "../../src-shared/WebviewCommand";
-import { WebviewMessage } from "../../src-shared/WebviewMessage";
+import type { WebviewMessage } from "../../src-shared/WebviewMessage";
 import { ExtVars } from "../ExtensionVariables";
 import { ErrorWebviewUninit, StrProperties } from "../Strings";
-import crypto = require("crypto");
+import crypto = require("node:crypto");
 
 /**
  * Base webview class that handles the creation of webview panels and injecting the React JavaScript bundle into the webview.

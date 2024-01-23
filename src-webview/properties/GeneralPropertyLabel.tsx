@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 import { Label, Text } from "@fluentui/react/lib/";
-import * as React from "react";
+import type * as React from "react";
 
 interface Props {
 	label: string;

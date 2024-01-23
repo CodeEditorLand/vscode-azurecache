@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 import { ThemeIcon } from "vscode";
-import { TreeItemIconPath } from "vscode-azureextensionui";
+import type { TreeItemIconPath } from "vscode-azureextensionui";
 import { KeyContentItem } from "../KeyContentItem";
 
 /**

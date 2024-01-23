@@ -3,16 +3,16 @@
 
 import {
 	GroupedList,
-	IGroup,
-	IGroupDividerProps,
-	IGroupHeaderProps,
-	IGroupRenderProps,
-	IRenderFunction,
-	IStyle,
+	type IGroup,
+	type IGroupDividerProps,
+	type IGroupHeaderProps,
+	type IGroupRenderProps,
+	type IRenderFunction,
+	type IStyle,
 	Label,
 	SelectionMode,
 } from "@fluentui/react/lib/";
-import * as React from "react";
+import type * as React from "react";
 import {
 	StrAccessKeys,
 	StrPrimary,

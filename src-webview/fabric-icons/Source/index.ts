@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { IIconOptions } from "@uifabric/styling";
+import type { IIconOptions } from "@uifabric/styling";
 import { initializeIcons as i } from "./fabric-icons";
 
 export function initializeIcons(baseUrl = "", options?: IIconOptions): void {

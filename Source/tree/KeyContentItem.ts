@@ -2,9 +2,9 @@
 // Licensed under the MIT License.
 
 import { AzExtTreeItem } from "vscode-azureextensionui";
-import { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
-import { RedisClusterNodeItem } from "./redis/RedisClusterNodeItem";
-import { RedisDbItem } from "./redis/RedisDbItem";
+import type { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
+import type { RedisClusterNodeItem } from "./redis/RedisClusterNodeItem";
+import type { RedisDbItem } from "./redis/RedisDbItem";
 
 /**
  * Base class for tree items that represents "leaf" nodes (items that hold the contents of a Redis key).

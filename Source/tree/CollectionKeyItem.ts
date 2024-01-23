@@ -2,11 +2,11 @@
 // Licensed under the MIT License.
 
 import { AzExtTreeItem } from "vscode-azureextensionui";
-import { CollectionElement } from "../../src-shared/CollectionElement";
-import { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
-import { CollectionWebview } from "../webview/CollectionWebview";
-import { RedisClusterNodeItem } from "./redis/RedisClusterNodeItem";
-import { RedisDbItem } from "./redis/RedisDbItem";
+import type { CollectionElement } from "../../src-shared/CollectionElement";
+import type { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
+import type { CollectionWebview } from "../webview/CollectionWebview";
+import type { RedisClusterNodeItem } from "./redis/RedisClusterNodeItem";
+import type { RedisDbItem } from "./redis/RedisDbItem";
 
 /**
  * Base class for tree items that represent a collection-type key, like lists, sets, and hashes.

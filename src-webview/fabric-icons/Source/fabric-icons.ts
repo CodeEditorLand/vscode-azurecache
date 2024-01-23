@@ -1,7 +1,11 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { IIconOptions, IIconSubset, registerIcons } from "@uifabric/styling";
+import {
+	type IIconOptions,
+	type IIconSubset,
+	registerIcons,
+} from "@uifabric/styling";
 
 export function initializeIcons(baseUrl = ".", options?: IIconOptions): void {
 	const subset: IIconSubset = {

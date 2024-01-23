@@ -2,8 +2,8 @@
 // Licensed under the MIT License.
 
 import { ThemeIcon } from "vscode";
-import { TreeItemIconPath } from "vscode-azureextensionui";
-import { CollectionElement } from "../../../src-shared/CollectionElement";
+import type { TreeItemIconPath } from "vscode-azureextensionui";
+import type { CollectionElement } from "../../../src-shared/CollectionElement";
 import { RedisClient } from "../../clients/RedisClient";
 import { CollectionWebview } from "../../webview/CollectionWebview";
 import { CollectionKeyItem } from "../CollectionKeyItem";

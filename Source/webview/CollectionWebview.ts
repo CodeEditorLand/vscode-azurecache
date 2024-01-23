@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { CollectionWebviewData } from "../../src-shared/CollectionWebviewData";
+import type { CollectionWebviewData } from "../../src-shared/CollectionWebviewData";
 import { WebviewCommand } from "../../src-shared/WebviewCommand";
-import { WebviewMessage } from "../../src-shared/WebviewMessage";
+import type { WebviewMessage } from "../../src-shared/WebviewMessage";
 import { WebviewView } from "../../src-shared/WebviewView";
-import { SupportedKeyType } from "../SupportedKeyType";
-import { CollectionKeyItem } from "../tree/CollectionKeyItem";
+import type { SupportedKeyType } from "../SupportedKeyType";
+import type { CollectionKeyItem } from "../tree/CollectionKeyItem";
 import { RedisHashItem } from "../tree/redis/RedisHashItem";
 import { BaseWebview } from "./BaseWebview";
 

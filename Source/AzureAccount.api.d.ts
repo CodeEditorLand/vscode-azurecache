@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { ReadStream } from "fs";
+import type { ReadStream } from "node:fs";
 // Copied from vscode-azure-account/src/azure-account.api.d.ts
-import { SubscriptionModels } from "azure-arm-resource";
-import { ServiceClientCredentials } from "ms-rest";
-import { AzureEnvironment } from "ms-rest-azure";
-import { CancellationToken, Event, Progress, Terminal } from "vscode";
+import type { SubscriptionModels } from "azure-arm-resource";
+import type { ServiceClientCredentials } from "ms-rest";
+import type { AzureEnvironment } from "ms-rest-azure";
+import type { CancellationToken, Event, Progress, Terminal } from "vscode";
 
 export type AzureLoginStatus =
 	| "Initializing"

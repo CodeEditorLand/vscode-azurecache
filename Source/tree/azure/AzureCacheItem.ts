@@ -3,25 +3,25 @@
 
 import * as vscode from "vscode";
 import {
-	AzExtTreeItem,
+	type AzExtTreeItem,
 	AzureParentTreeItem,
 	GenericTreeItem,
-	IActionContext,
-	TreeItemIconPath,
+	type IActionContext,
+	type TreeItemIconPath,
 } from "vscode-azureextensionui";
-import { ParsedRedisResource } from "../../../src-shared/ParsedRedisResource";
+import type { ParsedRedisResource } from "../../../src-shared/ParsedRedisResource";
 import { ExtVars } from "../../ExtensionVariables";
 import { ErrorEmptyCache } from "../../Strings";
 import { RedisClient } from "../../clients/RedisClient";
-import { RedisResourceClient } from "../../clients/RedisResourceClient";
+import type { RedisResourceClient } from "../../clients/RedisResourceClient";
 import * as ResourceUtils from "../../utils/ResourceUtils";
 import { CachePropsWebview } from "../../webview/CachePropsWebview";
-import { FilterParentItem } from "../FilterParentItem";
+import type { FilterParentItem } from "../FilterParentItem";
 import { KeyFilterItem } from "../filter/KeyFilterItem";
 import { RedisClusterNodeItem } from "../redis/RedisClusterNodeItem";
 import { RedisDbItem } from "../redis/RedisDbItem";
-import { AzureSubscriptionTreeItem } from "./AzureSubscriptionTreeItem";
-import path = require("path");
+import type { AzureSubscriptionTreeItem } from "./AzureSubscriptionTreeItem";
+import path = require("node:path");
 
 /**
  * Tree item for an Azure cache.
@@ -127,7 +127,7 @@ export class AzureCacheItem
 
 			// Extract DB number (e.g. 'db20' to 20)
 			const activeDbs = matches.map((match) =>
-				parseInt(match.split("db")[1]),
+				Number.parseInt(match.split("db")[1]),
 			);
 			// Map DB numbers to TreeItems
 			const treeItems = activeDbs.map((db) => new RedisDbItem(this, db));

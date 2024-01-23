@@ -2,14 +2,14 @@
 // Licensed under the MIT License.
 
 import { ThemeIcon } from "vscode";
-import {
+import type {
 	AzExtTreeItem,
 	IActionContext,
 	TreeItemIconPath,
 } from "vscode-azureextensionui";
 import { StrDatabaseAbbrv } from "../../Strings";
 import { RedisClient } from "../../clients/RedisClient";
-import { FilterParentItem } from "../FilterParentItem";
+import type { FilterParentItem } from "../FilterParentItem";
 import { KeyContainerItem } from "../KeyContainerItem";
 import { KeyFilterItem } from "../filter/KeyFilterItem";
 import { RedisHashItem } from "./RedisHashItem";

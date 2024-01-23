@@ -4,27 +4,27 @@
 import * as vscode from "vscode";
 import {
 	AzExtTreeDataProvider,
-	AzExtTreeItem,
+	type AzExtTreeItem,
 	AzureUserInput,
-	IActionContext,
+	type IActionContext,
 	createAzExtOutputChannel,
 	registerCommand,
 	registerUIExtensionVariables,
 } from "vscode-azureextensionui";
-import { ParsedRedisResource } from "../src-shared/ParsedRedisResource";
-import { AzureAccount } from "./AzureAccount.api";
+import type { ParsedRedisResource } from "../src-shared/ParsedRedisResource";
+import type { AzureAccount } from "./AzureAccount.api";
 import { ExtVars } from "./ExtensionVariables";
 import { textInput } from "./Input";
 import { KeyContentProvider } from "./KeyContentProvider";
 import * as Strings from "./Strings";
 import { RedisClient } from "./clients/RedisClient";
-import { FilterParentItem } from "./tree/FilterParentItem";
+import type { FilterParentItem } from "./tree/FilterParentItem";
 import { AzureAccountTreeItem } from "./tree/azure/AzureAccountTreeItem";
 import { AzureCacheItem } from "./tree/azure/AzureCacheItem";
-import { RedisHashItem } from "./tree/redis/RedisHashItem";
-import { RedisListItem } from "./tree/redis/RedisListItem";
-import { RedisSetItem } from "./tree/redis/RedisSetItem";
-import { RedisZSetItem } from "./tree/redis/RedisZSetItem";
+import type { RedisHashItem } from "./tree/redis/RedisHashItem";
+import type { RedisListItem } from "./tree/redis/RedisListItem";
+import type { RedisSetItem } from "./tree/redis/RedisSetItem";
+import type { RedisZSetItem } from "./tree/redis/RedisZSetItem";
 
 export async function activate(
 	context: vscode.ExtensionContext,

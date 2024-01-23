@@ -3,10 +3,10 @@
 
 import {
 	Async,
-	ICancelable,
-	IRenderFunction,
-	IStackTokens,
-	ITextFieldProps,
+	type ICancelable,
+	type IRenderFunction,
+	type IStackTokens,
+	type ITextFieldProps,
 	Spinner,
 	SpinnerSize,
 	Stack,
@@ -55,8 +55,7 @@ export class HashFilterField extends React.Component<Props> {
 			<Stack
 				horizontal={true}
 				verticalAlign="center"
-				tokens={stackTokens}
-			>
+				tokens={stackTokens}>
 				<span>{defaultRender(props)}</span>
 				{isLoading && <Spinner size={SpinnerSize.small} />}
 			</Stack>

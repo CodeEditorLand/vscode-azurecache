@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { URLSearchParams } from "url";
+import { URLSearchParams } from "node:url";
 import * as vscode from "vscode";
-import { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
+import type { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
 import { ExtVars } from "../ExtensionVariables";
 import { ErrorInvalidUri } from "../Strings";
-import { SupportedKeyType } from "../SupportedKeyType";
+import type { SupportedKeyType } from "../SupportedKeyType";
 
 /**
  * Represents the data included in a show-key request.

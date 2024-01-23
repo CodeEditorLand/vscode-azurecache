@@ -1,16 +1,16 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import RedisManagementClient from "azure-arm-rediscache";
-import {
+import type RedisManagementClient from "azure-arm-rediscache";
+import type {
 	RedisListResult,
 	RedisResource,
 } from "azure-arm-rediscache/lib/models";
-import { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
+import type { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
 import { ExtVars } from "../ExtensionVariables";
 import * as Strings from "../Strings";
-import { ParsedRedisListResult } from "../parsed/ParsedRedisListResult";
-import { ParsedResourceId } from "../parsed/ParsedResourceId";
+import type { ParsedRedisListResult } from "../parsed/ParsedRedisListResult";
+import type { ParsedResourceId } from "../parsed/ParsedResourceId";
 
 /**
  * Type guard to ensure given value is defined.

@@ -2,16 +2,16 @@
 // Licensed under the MIT License.
 
 import * as vscode from "vscode";
-import {
+import type {
 	AzExtTreeItem,
 	IActionContext,
 	TreeItemIconPath,
 } from "vscode-azureextensionui";
 import { StrShard, StrUnknownShard } from "../../Strings";
 import { RedisClient } from "../../clients/RedisClient";
-import { FilterParentItem } from "../FilterParentItem";
+import type { FilterParentItem } from "../FilterParentItem";
 import { KeyContainerItem } from "../KeyContainerItem";
-import { AzureCacheItem } from "../azure/AzureCacheItem";
+import type { AzureCacheItem } from "../azure/AzureCacheItem";
 import { KeyFilterItem } from "../filter/KeyFilterItem";
 import { RedisHashItem } from "./RedisHashItem";
 import { RedisListItem } from "./RedisListItem";

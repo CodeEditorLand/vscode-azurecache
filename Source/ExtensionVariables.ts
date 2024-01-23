@@ -2,14 +2,14 @@
 // Licensed under the MIT License.
 
 /* eslint-disable @typescript-eslint/no-namespace */
-import { ExtensionContext, TreeView } from "vscode";
-import {
+import type { ExtensionContext, TreeView } from "vscode";
+import type {
 	AzExtTreeDataProvider,
 	AzExtTreeItem,
 	IAzExtOutputChannel,
 	IAzureUserInput,
 } from "vscode-azureextensionui";
-import { KeyContentProvider } from "./KeyContentProvider";
+import type { KeyContentProvider } from "./KeyContentProvider";
 
 /**
  * Namespace for common variables used throughout the extension. They must be initialized in the activate() method of extension.ts

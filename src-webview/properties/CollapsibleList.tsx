@@ -3,14 +3,14 @@
 
 import {
 	GroupedList,
-	IGroupDividerProps,
-	IGroupHeaderProps,
-	IGroupRenderProps,
-	IRenderFunction,
+	type IGroupDividerProps,
+	type IGroupHeaderProps,
+	type IGroupRenderProps,
+	type IRenderFunction,
 	Label,
 	SelectionMode,
 } from "@fluentui/react/lib/";
-import * as React from "react";
+import type * as React from "react";
 import { CopyableTextField } from "./CopyableTextField";
 
 interface Props {

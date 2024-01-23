@@ -2,9 +2,9 @@
 // Licensed under the MIT License.
 
 import * as vscode from "vscode";
-import { ParsedRedisResource } from "../src-shared/ParsedRedisResource";
+import type { ParsedRedisResource } from "../src-shared/ParsedRedisResource";
 import * as Strings from "./Strings";
-import { SupportedKeyType } from "./SupportedKeyType";
+import type { SupportedKeyType } from "./SupportedKeyType";
 import { RedisClient } from "./clients/RedisClient";
 import { createKeyContentUri, decodeUri } from "./utils/UriUtils";
 
@@ -50,7 +50,7 @@ export class KeyContentProvider implements vscode.TextDocumentContentProvider {
 				if (!subkey) {
 					throw new Error(Strings.ErrorMissingSubkey);
 				}
-				value = await client.lindex(key, parseInt(subkey), db);
+				value = await client.lindex(key, Number.parseInt(subkey), db);
 			} else if (type === "hash" || type === "set" || type === "zset") {
 				// For hash, set, and sorted set types, the key value must already be set in currentValue
 				if (typeof this.currentValue === "undefined") {

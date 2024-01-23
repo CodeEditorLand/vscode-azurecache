@@ -3,9 +3,9 @@
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from "react";
-import { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
+import type { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
 import { WebviewCommand } from "../../src-shared/WebviewCommand";
-import { WebviewMessage } from "../../src-shared/WebviewMessage";
+import type { WebviewMessage } from "../../src-shared/WebviewMessage";
 import * as Strings from "../Strings";
 import { AccessKeyDropdown } from "./AccessKeyDropdown";
 import { CollapsibleList } from "./CollapsibleList";

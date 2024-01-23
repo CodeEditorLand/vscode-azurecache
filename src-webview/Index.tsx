@@ -5,7 +5,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { WebviewCommand } from "../src-shared/WebviewCommand";
-import { WebviewMessage } from "../src-shared/WebviewMessage";
+import type { WebviewMessage } from "../src-shared/WebviewMessage";
 import { WebviewView } from "../src-shared/WebviewView";
 import { CollectionView } from "./data-viewer/CollectionView";
 import { initializeIcons } from "./fabric-icons/src";

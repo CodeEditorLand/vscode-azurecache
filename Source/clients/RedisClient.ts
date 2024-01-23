@@ -3,7 +3,7 @@
 
 import * as IORedis from "ioredis";
 import * as vscode from "vscode";
-import { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
+import type { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
 import { ExtVars } from "../ExtensionVariables";
 import * as Strings from "../Strings";
 

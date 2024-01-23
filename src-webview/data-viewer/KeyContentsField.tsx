@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 import { TextField } from "@fluentui/react";
-import * as React from "react";
+import type * as React from "react";
 import { StrContents } from "../Strings";
 import "./KeyContentsField.css";
 

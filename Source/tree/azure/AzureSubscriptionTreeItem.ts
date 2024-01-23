@@ -3,12 +3,12 @@
 
 import { RedisManagementClient } from "azure-arm-rediscache";
 import {
-	IActionContext,
+	type IActionContext,
 	SubscriptionTreeItemBase,
 	createAzureClient,
 } from "vscode-azureextensionui";
 import { RedisResourceClient } from "../../clients/RedisResourceClient";
-import { ParsedRedisListResult } from "../../parsed/ParsedRedisListResult";
+import type { ParsedRedisListResult } from "../../parsed/ParsedRedisListResult";
 import { AzureCacheItem } from "./AzureCacheItem";
 
 /**

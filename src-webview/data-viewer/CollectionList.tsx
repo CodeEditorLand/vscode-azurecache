@@ -2,15 +2,15 @@
 // Licensed under the MIT License.
 
 import {
-	ITheme,
+	type ITheme,
 	List,
 	getFocusStyle,
 	getTheme,
 	mergeStyleSets,
 } from "@fluentui/react";
 import * as React from "react";
-import { CollectionType } from "./CollectionType";
-import { SelectableCollectionElement } from "./SelectableCollectionElement";
+import type { CollectionType } from "./CollectionType";
+import type { SelectableCollectionElement } from "./SelectableCollectionElement";
 
 const theme: ITheme = getTheme();
 const { semanticColors, fonts } = theme;
@@ -106,8 +106,7 @@ export class CollectionList extends React.Component<Props, {}> {
 				className={itemCellClass}
 				data-is-focusable={true}
 				data-is-scrollable={true}
-				onClick={onClick}
-			>
+				onClick={onClick}>
 				<div className={classNames.itemContent}>
 					{header}
 					<div className={classNames.itemName}>{item.value}</div>
@@ -144,8 +143,7 @@ export class CollectionList extends React.Component<Props, {}> {
 					borderStyle: "solid",
 					borderWidth: 1,
 				}}
-				onScroll={this.handleListScroll}
-			>
+				onScroll={this.handleListScroll}>
 				<List items={data} onRenderCell={this.onRenderCell} />
 			</div>
 		);

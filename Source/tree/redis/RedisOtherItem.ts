@@ -2,10 +2,10 @@
 // Licensed under the MIT License.
 
 import { ThemeIcon } from "vscode";
-import { TreeItemIconPath } from "vscode-azureextensionui";
+import type { TreeItemIconPath } from "vscode-azureextensionui";
 import { KeyContentItem } from "../KeyContentItem";
-import { RedisClusterNodeItem } from "./RedisClusterNodeItem";
-import { RedisDbItem } from "./RedisDbItem";
+import type { RedisClusterNodeItem } from "./RedisClusterNodeItem";
+import type { RedisDbItem } from "./RedisDbItem";
 
 /**
  * Tree item for any other datatypes.

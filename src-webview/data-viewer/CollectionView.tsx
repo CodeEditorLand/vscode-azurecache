@@ -3,17 +3,17 @@
 
 import { PrimaryButton } from "@fluentui/react";
 import * as React from "react";
-import { CollectionWebviewData } from "../../src-shared/CollectionWebviewData";
+import type { CollectionWebviewData } from "../../src-shared/CollectionWebviewData";
 import { WebviewCommand } from "../../src-shared/WebviewCommand";
-import { WebviewMessage } from "../../src-shared/WebviewMessage";
+import type { WebviewMessage } from "../../src-shared/WebviewMessage";
 import { StrLoadMore } from "../Strings";
 import { vscode } from "../vscode";
 import { CollectionList } from "./CollectionList";
-import { CollectionType } from "./CollectionType";
+import type { CollectionType } from "./CollectionType";
 import "./CollectionView.css";
 import { HashFilterField } from "./HashFilterField";
 import { KeyContentsField } from "./KeyContentsField";
-import { SelectableCollectionElement } from "./SelectableCollectionElement";
+import type { SelectableCollectionElement } from "./SelectableCollectionElement";
 
 interface State {
 	currentValue?: string;

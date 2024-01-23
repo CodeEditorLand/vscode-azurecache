@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-const path = require("path");
-const process = require("process");
+const path = require("node:path");
+const process = require("node:process");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const FileManagerPlugin = require("filemanager-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");

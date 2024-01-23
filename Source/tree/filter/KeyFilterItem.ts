@@ -3,12 +3,12 @@
 
 import { ThemeIcon } from "vscode";
 import {
-	AzExtParentTreeItem,
+	type AzExtParentTreeItem,
 	AzExtTreeItem,
-	TreeItemIconPath,
+	type TreeItemIconPath,
 } from "vscode-azureextensionui";
 import { StrKeyFilter } from "../../Strings";
-import { FilterParentItem } from "../FilterParentItem";
+import type { FilterParentItem } from "../FilterParentItem";
 
 /**
  * Tree item for a key filter, which is used in two situations:
