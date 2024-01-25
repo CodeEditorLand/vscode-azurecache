@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import { URLSearchParams } from "node:url";
+import { URLSearchParams } from "url";
 import * as vscode from "vscode";
 import type { ParsedRedisResource } from "../../src-shared/ParsedRedisResource";
 import { ExtVars } from "../ExtensionVariables";

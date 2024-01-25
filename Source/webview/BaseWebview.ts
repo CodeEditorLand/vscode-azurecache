@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import * as path from "node:path";
+import * as path from "path";
 import * as vscode from "vscode";
 import { WebviewCommand } from "../../src-shared/WebviewCommand";
 import type { WebviewMessage } from "../../src-shared/WebviewMessage";

@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-import type { ReadStream } from "node:fs";
+import type { ReadStream } from "fs";
 // Copied from vscode-azure-account/src/azure-account.api.d.ts
 import type { SubscriptionModels } from "azure-arm-resource";
 import type { ServiceClientCredentials } from "ms-rest";
