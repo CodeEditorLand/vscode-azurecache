@@ -2,6 +2,6 @@
 // Licensed under the MIT License.
 
 export interface CollectionElement {
-	id?: string;
-	value: string;
+    id?: string;
+    value: string;
 }
