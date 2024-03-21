@@ -1,33 +1,15 @@
 {
-	"name": "vscode-azurecache",
-	"displayName": "Azure Cache",
-	"version": "0.0.1",
-	"private": false,
-	"description": "Manage and browse through data in your Azure Caches.",
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
-	"bugs": {
-		"url": "https://github.com/CodeEditorLand/Foundation/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
-	},
-	"license": "SEE LICENSE IN LICENSE",
+	"activationEvents": [
+		"onView:azureCache"
+	],
+	"aiKey": "AIF-00000000-0000-0000-0000-000000000000",
 	"author": {
-		"name": "Playform",
 		"email": "Hello@Playform.Cloud",
+		"name": "Playform",
 		"url": "https://playform.cloud"
 	},
-	"type": "module",
-	"main": "./dist/extension.js",
-	"scripts": {
-		"clean": "rimraf out/ dist/",
-		"compile": "rimraf out/ && tsc -p ./tsconfig-test.json",
-		"package": "vsce package --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
-		"publish": "vsce publish --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
-		"vscode:prepublish": "webpack --mode production",
-		"watch": "webpack --mode development --watch --info-verbosity verbose"
+	"bugs": {
+		"url": "https://github.com/CodeEditorLand/Foundation/issues"
 	},
 	"contributes": {
 		"commands": [
@@ -193,9 +175,6 @@
 			]
 		}
 	},
-	"activationEvents": [
-		"onView:azureCache"
-	],
 	"dependencies": {
 		"@babel/runtime": "^7.11.0",
 		"@fluentui/react": "^7.124.1",
@@ -208,6 +187,7 @@
 		"vscode-azureextensiondev": "^0.4.1",
 		"vscode-azureextensionui": "^0.33.9"
 	},
+	"description": "Manage and browse through data in your Azure Caches.",
 	"devDependencies": {
 		"@babel/core": "^7.11.0",
 		"@babel/plugin-proposal-class-properties": "^7.10.4",
@@ -236,19 +216,39 @@
 		"ts-loader": "^7.0.5",
 		"ts-sinon": "^1.2.0",
 		"typescript": "^3.9.7",
-		"typescript-esbuild": "0.4.5",
+		"typescript-esbuild": "",
 		"vsce": "^1.77.0",
 		"vscode-test": "^1.4.0",
 		"webpack": "^4.44.1",
 		"webpack-cli": "^3.3.12"
 	},
+	"displayName": "Azure Cache",
 	"extensionDependencies": [
 		"ms-vscode.azure-account"
 	],
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"icon": "resources/azure-cache.png",
+	"license": "SEE LICENSE IN LICENSE",
+	"main": "./dist/extension.js",
+	"name": "vscode-azurecache",
+	"preview": true,
+	"private": false,
 	"publishConfig": {
 		"access": "public"
 	},
-	"icon": "resources/azure-cache.png",
-	"preview": true,
-	"aiKey": "AIF-00000000-0000-0000-0000-000000000000"
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+	},
+	"scripts": {
+		"clean": "rimraf out/ dist/",
+		"compile": "rimraf out/ && tsc -p ./tsconfig-test.json",
+		"package": "vsce package --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"publish": "vsce publish --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
+		"vscode:prepublish": "webpack --mode production",
+		"watch": "webpack --mode development --watch --info-verbosity verbose"
+	},
+	"type": "module",
+	"version": "0.0.1"
 }
