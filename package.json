@@ -236,7 +236,7 @@
 		"ts-loader": "^7.0.5",
 		"ts-sinon": "^1.2.0",
 		"typescript": "^3.9.7",
-		"typescript-esbuild": "latest",
+		"typescript-esbuild": "0.4.5",
 		"vsce": "^1.77.0",
 		"vscode-test": "^1.4.0",
 		"webpack": "^4.44.1",
