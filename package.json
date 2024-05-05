@@ -4,30 +4,31 @@
 	"version": "0.0.1",
 	"private": false,
 	"description": "Manage and browse through data in your Azure Caches.",
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"keywords": [
+		"land"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandAzureCache#readme",
 	"bugs": {
-		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandAzureCache/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+		"url": "git+HTTPS://github.com/CodeEditorLand/LandAzureCache.git"
 	},
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
-		"name": "Playform",
-		"email": "Hello@Playform.Cloud",
-		"url": "https://playform.cloud"
+		"name": "🌆 — Land —",
+		"email": "Land@PlayForm.Cloud",
+		"url": "HTTPS://Land.PlayForm.Cloud"
 	},
 	"type": "module",
 	"main": "./dist/extension.js",
 	"scripts": {
+		"Document": "Document 'Source/**/*.ts'",
 		"clean": "rimraf out/ dist/",
 		"compile": "rimraf out/ && tsc -p ./tsconfig-test.json",
-		"package": "vsce package --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
-		"publish": "vsce publish --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/",
-		"vscode:prepublish": "webpack --mode production",
-		"watch": "webpack --mode development --watch --info-verbosity verbose"
+		"prepublishOnly": "Build 'Source/**/*.ts'",
+		"publish": "vsce publish --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/"
 	},
 	"contributes": {
 		"commands": [
@@ -197,50 +198,24 @@
 		"onView:azureCache"
 	],
 	"dependencies": {
-		"@babel/runtime": "^7.11.0",
-		"@fluentui/react": "^7.124.1",
-		"azure-arm-rediscache": "^3.0.0",
-		"ioredis": "^4.17.3",
-		"react": "^16.13.1",
-		"react-dom": "^16.13.1",
-		"sinon": "^9.0.2",
-		"uuid": "^8.3.0",
-		"vscode-azureextensiondev": "^0.4.1",
-		"vscode-azureextensionui": "^0.33.9"
+		"ioredis": "5.4.1",
+		"sinon": "17.0.1",
+		"uuid": "9.0.1"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.11.0",
-		"@babel/plugin-proposal-class-properties": "^7.10.4",
-		"@babel/plugin-transform-runtime": "^7.11.0",
-		"@babel/preset-env": "^7.11.0",
-		"@babel/preset-react": "^7.10.4",
-		"@babel/preset-typescript": "^7.10.4",
-		"@types/glob": "^7.1.3",
-		"@types/ioredis": "^4.17.3",
-		"@types/mocha": "^7.0.2",
-		"@types/node": "^13.13.15",
-		"@types/react": "^16.9.44",
-		"@types/react-dom": "^16.9.8",
-		"@types/sinon": "^9.0.4",
-		"@types/uuid": "^8.0.0",
-		"@types/vscode": "^1.43.0",
-		"babel-loader": "^8.1.0",
-		"clean-webpack-plugin": "^3.0.0",
-		"css-loader": "^3.6.0",
-		"filemanager-webpack-plugin": "^2.0.5",
-		"glob": "^7.1.6",
-		"mocha": "^7.2.0",
-		"rimraf": "^3.0.2",
-		"style-loader": "^1.2.1",
-		"terser-webpack-plugin": "^3.0.8",
-		"ts-loader": "^7.0.5",
-		"ts-sinon": "^1.2.0",
-		"typescript": "^3.9.7",
-		"typescript-esbuild": "0.4.5",
-		"vsce": "^1.77.0",
-		"vscode-test": "^1.4.0",
-		"webpack": "^4.44.1",
-		"webpack-cli": "^3.3.12"
+		"@playform/build": "0.0.7",
+		"@playform/document": "0.0.6",
+		"@types/glob": "8.1.0",
+		"@types/ioredis": "4.28.10",
+		"@types/node": "20.12.7",
+		"@types/sinon": "17.0.3",
+		"@types/uuid": "9.0.8",
+		"css-loader": "7.1.1",
+		"glob": "10.3.12",
+		"rimraf": "5.0.5",
+		"style-loader": "4.0.0",
+		"ts-loader": "9.5.1",
+		"ts-sinon": "2.0.2"
 	},
 	"extensionDependencies": [
 		"ms-vscode.azure-account"
