@@ -1,27 +1,7 @@
 {
 	"name": "vscode-azurecache",
 	"displayName": "Azure Cache",
-	"version": "0.0.1",
-	"private": false,
 	"description": "Manage and browse through data in your Azure Caches.",
-	"keywords": [
-		"land"
-	],
-	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandAzureCache#readme",
-	"bugs": {
-		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandAzureCache/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+HTTPS://github.com/CodeEditorLand/LandAzureCache.git"
-	},
-	"license": "SEE LICENSE IN LICENSE",
-	"author": {
-		"name": "🛬 Land —",
-		"email": "Land@PlayForm.Cloud",
-		"url": "HTTPS://Land.PlayForm.Cloud"
-	},
-	"type": "module",
 	"main": "./dist/extension.js",
 	"scripts": {
 		"Document": "Document 'Source/**/*.ts'",
@@ -204,7 +184,6 @@
 	},
 	"devDependencies": {
 		"@playform/build": "0.0.7",
-		"@playform/document": "0.0.6",
 		"@types/glob": "8.1.0",
 		"@types/ioredis": "4.28.10",
 		"@types/node": "20.12.10",
@@ -220,9 +199,6 @@
 	"extensionDependencies": [
 		"ms-vscode.azure-account"
 	],
-	"publishConfig": {
-		"access": "public"
-	},
 	"icon": "resources/azure-cache.png",
 	"preview": true,
 	"aiKey": "AIF-00000000-0000-0000-0000-000000000000"
