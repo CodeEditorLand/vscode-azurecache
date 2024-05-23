@@ -2,4 +2,3 @@ dist
 out
 .vscode-test/
 *.vsix
-.DS_Store
