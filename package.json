@@ -168,23 +168,23 @@
 		}
 	},
 	"dependencies": {
-		"ioredis": "^5.4.1",
-		"sinon": "^18.0.0",
-		"uuid": "^10.0.0"
+		"ioredis": "5.4.1",
+		"sinon": "18.0.0",
+		"uuid": "10.0.0"
 	},
 	"description": "Manage and browse through data in your Azure Caches.",
 	"devDependencies": {
-		"@types/glob": "^8.1.0",
-		"@types/ioredis": "^4.28.10",
-		"@types/node": "^20.14.2",
-		"@types/sinon": "^17.0.3",
-		"@types/uuid": "^9.0.8",
-		"css-loader": "^7.1.2",
-		"glob": "^10.4.1",
-		"rimraf": "^5.0.7",
-		"style-loader": "^4.0.0",
-		"ts-loader": "^9.5.1",
-		"ts-sinon": "^2.0.2"
+		"@types/glob": "8.1.0",
+		"@types/ioredis": "4.28.10",
+		"@types/node": "20.14.2",
+		"@types/sinon": "17.0.3",
+		"@types/uuid": "9.0.8",
+		"css-loader": "7.1.2",
+		"glob": "10.4.1",
+		"rimraf": "5.0.7",
+		"style-loader": "4.0.0",
+		"ts-loader": "9.5.1",
+		"ts-sinon": "2.0.2"
 	},
 	"displayName": "Azure Cache",
 	"extensionDependencies": [
