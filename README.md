@@ -22,7 +22,7 @@ in your Azure Caches and monitor them at a glance.
 -   View cache properties
 -   Access primary key and connection string
 
-## Installation
+## 🚀 Installation
 
 1. Download and install the
    [Azure Cache extension](https://marketplace.visualstudio.com/items?itemName=ms-azurecache.vscode-azurecache)
