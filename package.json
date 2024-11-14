@@ -170,7 +170,7 @@
 	"dependencies": {
 		"ioredis": "5.4.1",
 		"sinon": "19.0.2",
-		"uuid": "11.0.2"
+		"uuid": "11.0.3"
 	},
 	"description": "Manage and browse through data in your Azure Caches.",
 	"devDependencies": {
