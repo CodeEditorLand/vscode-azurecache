@@ -1,13 +1,8 @@
 {
-	"name": "vscode-azurecache",
-	"displayName": "Azure Cache",
-	"description": "Manage and browse through data in your Azure Caches.",
-	"main": "./dist/extension.js",
-	"scripts": {
-		"clean": "rimraf out/ dist/",
-		"compile": "rimraf out/ && tsc -p ./tsconfig-test.json",
-		"publish": "vsce publish --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/"
-	},
+	"activationEvents": [
+		"onView:azureCache"
+	],
+	"aiKey": "AIF-00000000-0000-0000-0000-000000000000",
 	"contributes": {
 		"commands": [
 			{
@@ -172,14 +167,12 @@
 			]
 		}
 	},
-	"activationEvents": [
-		"onView:azureCache"
-	],
 	"dependencies": {
 		"ioredis": "5.4.1",
 		"sinon": "19.0.2",
 		"uuid": "11.0.3"
 	},
+	"description": "Manage and browse through data in your Azure Caches.",
 	"devDependencies": {
 		"@types/glob": "8.1.0",
 		"@types/ioredis": "5.0.0",
@@ -193,10 +186,17 @@
 		"ts-loader": "9.5.1",
 		"ts-sinon": "2.0.2"
 	},
+	"displayName": "Azure Cache",
 	"extensionDependencies": [
 		"ms-vscode.azure-account"
 	],
 	"icon": "resources/azure-cache.png",
+	"main": "./dist/extension.js",
+	"name": "vscode-azurecache",
 	"preview": true,
-	"aiKey": "AIF-00000000-0000-0000-0000-000000000000"
+	"scripts": {
+		"clean": "rimraf out/ dist/",
+		"compile": "rimraf out/ && tsc -p ./tsconfig-test.json",
+		"publish": "vsce publish --baseImagesUrl https://github.com/microsoft/vscode-azurecache/raw/main/"
+	}
 }
