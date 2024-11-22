@@ -39,6 +39,7 @@ export class RedisResourceClient {
 		resourceId: string,
 	): Promise<ParsedRedisResource> {
 		const { resourceGroup, name } = this.parseResourceId(resourceId);
+
 		return this.getRedisResourceByName(resourceGroup, name);
 	}
 
@@ -55,6 +56,7 @@ export class RedisResourceClient {
 			resourceGroup,
 			name,
 		);
+
 		return this.parseRedisResource(redisResource);
 	}
 
@@ -75,6 +77,7 @@ export class RedisResourceClient {
 			// Use the primary key or secondary key, whichever exists
 			const accessKey =
 				allAccessKeys.primaryKey ?? allAccessKeys.secondaryKey;
+
 			return accessKey;
 		} catch {
 			return undefined;
@@ -86,6 +89,7 @@ export class RedisResourceClient {
 	 */
 	public async listResources(): Promise<ParsedRedisListResult> {
 		const resources = await this.rmClient.redis.list();
+
 		return this.parseRedisListResult(resources);
 	}
 
@@ -97,6 +101,7 @@ export class RedisResourceClient {
 		nextLink: string,
 	): Promise<ParsedRedisListResult> {
 		const resources = await this.rmClient.redis.listNext(nextLink);
+
 		return this.parseRedisListResult(resources);
 	}
 
@@ -124,6 +129,7 @@ export class RedisResourceClient {
 			parsedResources,
 			{ nextLink: resources.nextLink },
 		);
+
 		return listResult;
 	}
 
@@ -163,13 +169,17 @@ export class RedisResourceClient {
 		const { name, resourceGroup, subscriptionId } = this.parseResourceId(
 			redisResource.id,
 		);
+
 		const accessKey = this.getAccessKey(resourceGroup, name);
+
 		const linkedServers = redisResource.linkedServers;
+
 		const linkedServerIds = linkedServers
 			?.map((server) => server.id)
 			.filter(isDefined);
 
 		let cluster: boolean;
+
 		let shardCount: number;
 
 		// Note: a shard count of 1 is still a clustered cache
@@ -213,6 +223,7 @@ export class RedisResourceClient {
 		// E.g. /subscriptions/{my-subscription-guid}/resourceGroups/{my-resource-name}/providers/Microsoft.Cache/Redis/{my-cache-name}
 		const regex =
 			/\/subscriptions\/([^/]+)\/resourceGroups\/([^/]+)\/providers\/Microsoft\.Cache\/[^/]+\/([^/]+)/i;
+
 		const matches = resourceId.match(regex);
 
 		// There should be 4 matches: the entire match, subscription ID, resource group, and resource name
@@ -221,7 +232,9 @@ export class RedisResourceClient {
 		}
 
 		const subscriptionId = matches[1];
+
 		const resourceGroup = matches[2];
+
 		const name = matches[3];
 
 		return {

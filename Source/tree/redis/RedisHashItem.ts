@@ -54,6 +54,7 @@ export class RedisHashItem
 		const client = await RedisClient.connectToRedisResource(
 			this.parsedRedisResource,
 		);
+
 		return client.hlen(this.key, this.db);
 	}
 
@@ -76,6 +77,7 @@ export class RedisHashItem
 		);
 
 		let curCursor = this.scanCursor;
+
 		const scannedFields: string[] = [];
 
 		// Keep scanning until a total of at least 10 elements have been returned
@@ -99,6 +101,7 @@ export class RedisHashItem
 		this.scanCursor = curCursor === "0" ? undefined : curCursor;
 
 		const collectionElements: CollectionElement[] = [];
+
 		let field = "";
 
 		// HSCAN returns a single list alternating between the hash field name and the hash field value

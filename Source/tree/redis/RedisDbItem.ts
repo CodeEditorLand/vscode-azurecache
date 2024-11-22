@@ -63,6 +63,7 @@ export class RedisDbItem extends KeyContainerItem implements FilterParentItem {
 		// Sometimes SCAN returns no results, so continue SCANNING until we receive results or we reach the end
 		// TODO: Sometimes the # elements returned is very little, so we can do additional scans if needed
 		let curCursor = this.scanCursor;
+
 		let scannedKeys: string[] = [];
 
 		do {
@@ -75,6 +76,7 @@ export class RedisDbItem extends KeyContainerItem implements FilterParentItem {
 		} while (curCursor !== "0" && scannedKeys.length === 0);
 
 		this.scanCursor = curCursor === "0" ? undefined : curCursor;
+
 		const treeItems = await Promise.all(
 			scannedKeys.map(async (key) =>
 				this.createLocalRedisKey(client, key),

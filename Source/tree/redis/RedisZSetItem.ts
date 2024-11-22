@@ -50,6 +50,7 @@ export class RedisZSetItem extends CollectionKeyItem {
 		const client = await RedisClient.connectToRedisResource(
 			this.parsedRedisResource,
 		);
+
 		return client.zcard(this.key, this.db);
 	}
 
@@ -74,17 +75,20 @@ export class RedisZSetItem extends CollectionKeyItem {
 
 		// Want to show elements X through element min(length, X + 10) - 1
 		const minIndex = this.elementsShown;
+
 		const maxIndex =
 			Math.min(
 				this.elementsShown + RedisZSetItem.incrementCount,
 				this.length,
 			) - 1;
+
 		const scannedElems = await client.zrange(
 			this.key,
 			minIndex,
 			maxIndex,
 			this.db,
 		);
+
 		const collectionElements: CollectionElement[] = [];
 
 		let value = "";
@@ -105,6 +109,7 @@ export class RedisZSetItem extends CollectionKeyItem {
 		}
 
 		this.elementsShown = maxIndex + 1;
+
 		return collectionElements;
 	}
 

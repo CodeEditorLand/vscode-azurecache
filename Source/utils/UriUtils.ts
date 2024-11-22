@@ -59,6 +59,7 @@ export function createKeyContentUri(
 ): vscode.Uri {
 	// If displayedSubkey is not provided, then just use subkey
 	displayedSubkey = displayedSubkey ?? subkey;
+
 	const { resourceId, hostName } = parsedRedisResource;
 	/**
 	 * The text that appears as the text document's title. If the key happens to be the empty string (which is allowed),
@@ -78,7 +79,9 @@ export function createKeyContentUri(
 		key,
 		subkey,
 	};
+
 	const payloadStr = JSON.stringify(payload);
+
 	const payloadB64 = Buffer.from(payloadStr).toString("base64");
 
 	/**
@@ -88,7 +91,9 @@ export function createKeyContentUri(
 	 *   2. In the decodeUri function, it uses URLSearchParams to parse the query string which, does another round of decoding
 	 */
 	const encodedB64 = encodeURIComponent(encodeURIComponent(payloadB64));
+
 	const uriString = `${ExtVars.prefix}:${hostName}/${uriSafeKey}${uriSafeSubkey}?payload=${encodedB64}`;
+
 	return vscode.Uri.parse(uriString, true);
 }
 
@@ -110,6 +115,7 @@ export function decodeUri(uri: vscode.Uri): ShowKeyPayload {
 	 * Secondly, constructing the URLSearchParams below implicitly decodes the given string another time.
 	 */
 	const urlParams = new URLSearchParams(uri.query);
+
 	const payloadB64 = urlParams.get("payload");
 
 	if (!payloadB64) {
@@ -117,7 +123,9 @@ export function decodeUri(uri: vscode.Uri): ShowKeyPayload {
 	}
 
 	const payloadStr = Buffer.from(payloadB64, "base64").toString("utf8");
+
 	const payload: ShowKeyPayload = JSON.parse(payloadStr);
+
 	return payload;
 }
 

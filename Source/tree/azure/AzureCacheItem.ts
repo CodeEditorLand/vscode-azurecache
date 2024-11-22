@@ -94,10 +94,12 @@ export class AzureCacheItem
 
 		if (this.isClustered) {
 			const treeItems = [];
+
 			const clusterNodeIds = client.clusterNodeIds;
 
 			for (const nodeId of clusterNodeIds) {
 				const port = (await client.getClusterNodeOptions(nodeId)).port;
+
 				if (port) {
 					treeItems.push(
 						new RedisClusterNodeItem(
@@ -111,11 +113,14 @@ export class AzureCacheItem
 			}
 
 			treeItems.push(new KeyFilterItem(this));
+
 			return treeItems;
 		} else {
 			// Parse active databases from INFO KEYSPACE command
 			const dbRegex = /db([0-9]+)/gm;
+
 			const infoKeyspace = await client.info("keyspace");
+
 			const matches = infoKeyspace.match(dbRegex);
 
 			if (!matches) {
@@ -133,6 +138,7 @@ export class AzureCacheItem
 			);
 			// Map DB numbers to TreeItems
 			const treeItems = activeDbs.map((db) => new RedisDbItem(this, db));
+
 			return treeItems;
 		}
 	}

@@ -13,10 +13,12 @@ export async function getConnectionString(
 	parsedRedisResource: ParsedRedisResource,
 ): Promise<string | undefined> {
 	const accessKey = await parsedRedisResource.accessKey;
+
 	if (!accessKey) {
 		return undefined;
 	}
 
 	const { hostName, sslPort } = parsedRedisResource;
+
 	return `${hostName}:${sslPort},password=${accessKey},ssl=True,abortConnect=False`;
 }

@@ -19,12 +19,16 @@ export namespace ExtVars {
 	export const prefix = "azureCache";
 
 	export let context: ExtensionContext;
+
 	export let outputChannel: IAzExtOutputChannel;
+
 	export let ui: IAzureUserInput;
+
 	export let ignoreBundle: boolean | undefined;
 
 	export let keyContentProvider: KeyContentProvider;
 
 	export let treeDataProvider: AzExtTreeDataProvider;
+
 	export let treeView: TreeView<AzExtTreeItem>;
 }

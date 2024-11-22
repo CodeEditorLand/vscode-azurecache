@@ -79,6 +79,7 @@ export async function activate(
 			"azureCache.setKeyFilter",
 			async (treeItem: FilterParentItem) => {
 				const currentFilterExpr = treeItem.getFilter();
+
 				const input = await textInput(
 					"*",
 					Strings.StrPromptKeyFilter,
@@ -88,6 +89,7 @@ export async function activate(
 					 */
 					`${Strings.StrCurrent}: ${currentFilterExpr}`,
 				);
+
 				if (input) {
 					treeItem.updateFilter(input);
 				}
@@ -180,6 +182,7 @@ export async function activate(
 			}
 
 			const connectionString = await treeItem.getConnectionString();
+
 			if (connectionString) {
 				vscode.env.clipboard.writeText(connectionString);
 			} else {

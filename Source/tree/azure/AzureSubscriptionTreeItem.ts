@@ -31,7 +31,9 @@ export class AzureSubscriptionTreeItem extends SubscriptionTreeItemBase {
 		}
 
 		const rmClient = createAzureClient(this.root, RedisManagementClient);
+
 		const resClient = new RedisResourceClient(rmClient);
+
 		const redisCollection: ParsedRedisListResult =
 			typeof this.nextLink === "undefined"
 				? await resClient.listResources()

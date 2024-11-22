@@ -95,6 +95,7 @@ export class KeyContentProvider implements vscode.TextDocumentContentProvider {
 	): Promise<void> {
 		this.currentValue = value;
 		this.currentResource = parsedRedisResource;
+
 		const uri = createKeyContentUri(
 			parsedRedisResource,
 			db,
@@ -108,6 +109,7 @@ export class KeyContentProvider implements vscode.TextDocumentContentProvider {
 		 * still show the previous element 0 value. Basically, it tells VS Code to not cache contents of keys.
 		 */
 		this.onDidChangeEmitter.fire(uri);
+
 		const doc = await vscode.workspace.openTextDocument(uri);
 		await vscode.window.showTextDocument(doc, {
 			preserveFocus: true,

@@ -48,6 +48,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
 			 *            etc.
 			 */
 			const lastTwoDigits = this.port % 100;
+
 			const shardNumber = Math.floor(lastTwoDigits / 2);
 			this.shard = shardNumber;
 		}
@@ -107,6 +108,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
 		// Sometimes SCAN returns no results, so continue SCANNING until we receive results or we reach the end
 		// TODO: Sometimes the # elements returned is very little, so we can do additional scans if needed
 		let curCursor = this.scanCursor;
+
 		let scannedKeys: string[] = [];
 
 		do {
@@ -119,6 +121,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
 		} while (curCursor !== "0" && scannedKeys.length === 0);
 
 		this.scanCursor = curCursor === "0" ? undefined : curCursor;
+
 		const treeItems = await Promise.all(
 			scannedKeys.map((key) => this.createLocalRedisKey(client, key)),
 		);

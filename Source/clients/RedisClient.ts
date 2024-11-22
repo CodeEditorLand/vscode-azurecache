@@ -76,10 +76,12 @@ export class RedisClient {
 				if (typeof dbOrNodeId === "string") {
 					// Arg is string, so interpret as cluster node ID
 					const clusterNodeClient = clusterClients?.get(dbOrNodeId);
+
 					if (!clusterNodeClient) {
 						vscode.window.showErrorMessage(
 							Strings.ErrorNotConnectToShard,
 						);
+
 						throw new Error(Strings.ErrorNotConnectToShard);
 					}
 					// Reconnect the cluster node's client if disconnected
@@ -124,6 +126,7 @@ export class RedisClient {
 		ignoreCache = false,
 	): Promise<RedisClient> {
 		const existingClient = this.clients.get(parsedRedisResource.resourceId);
+
 		if (!ignoreCache && existingClient) {
 			return existingClient;
 		}
@@ -152,7 +155,9 @@ export class RedisClient {
 					sslPort,
 					provisioningState,
 				} = parsedRedisResource;
+
 				const password = await accessKey;
+
 				if (typeof password === "undefined") {
 					throw new Error(Strings.ErrorReadAccessKey);
 				}
@@ -165,6 +170,7 @@ export class RedisClient {
 
 				// TODO: Support connecting over SSL (bug in IORedis)
 				const connectPort = cluster ? port : sslPort;
+
 				return this.connect(
 					cluster,
 					hostName,
@@ -177,6 +183,7 @@ export class RedisClient {
 
 		// Memoize client by resource ID
 		this.clients.set(parsedRedisResource.resourceId, newRedisClient);
+
 		return newRedisClient;
 	}
 
@@ -238,6 +245,7 @@ export class RedisClient {
 				client.on("ready", async function onReady() {
 					const clusterClients =
 						await RedisClient.createClusterNodeMap(client);
+
 					const redisClient = new RedisClient(client, clusterClients);
 					resolve(redisClient);
 					// Prevent from being called again
@@ -272,6 +280,7 @@ export class RedisClient {
 		// Called when Redis connection ends
 		client.on("end", () => {
 			ExtVars.outputChannel.appendLine("Redis connection ended");
+
 			if (pingInterval) {
 				clearInterval(pingInterval);
 				pingInterval = undefined;
@@ -297,6 +306,7 @@ export class RedisClient {
 		// Create mapping between the primary node IDs and their Redis clients
 		if (client instanceof IORedis.Cluster) {
 			const primaryNodeClients = client.nodes("master");
+
 			for (const primaryNodeClient of primaryNodeClients) {
 				const id = await primaryNodeClient.cluster("MYID");
 				clusterClients.set(id, primaryNodeClient);
@@ -327,6 +337,7 @@ export class RedisClient {
 	 */
 	protected async exec<T>(transaction: IORedis.Pipeline): Promise<T> {
 		const entireResult = await transaction.exec();
+
 		const lastCmdResult = entireResult[entireResult.length - 1];
 
 		if (!lastCmdResult || lastCmdResult.length < 2) {
@@ -335,6 +346,7 @@ export class RedisClient {
 
 		// Find the first error (if any) and throw it
 		const firstError = entireResult.find((r) => !!r[0]);
+
 		if (firstError?.[0]) {
 			throw firstError[0];
 		}
@@ -349,6 +361,7 @@ export class RedisClient {
 		const client = (await this.getClient(
 			clusterNodeId,
 		)) as IORedis.Pipeline;
+
 		return client.options;
 	}
 

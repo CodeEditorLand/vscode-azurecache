@@ -87,6 +87,7 @@ export abstract class BaseWebview {
 		const fontPathUri = vscode.Uri.file(
 			path.join(ExtVars.context.extensionPath, "dist", "fonts"),
 		);
+
 		const fontPathWebviewUri = this.webviewPanel.webview
 			.asWebviewUri(fontPathUri)
 			.toString();
@@ -131,10 +132,13 @@ export abstract class BaseWebview {
 		}
 
 		const webview = this.webviewPanel.webview;
+
 		const scriptPathOnDisk = vscode.Uri.file(
 			path.join(ExtVars.context.extensionPath, "dist", "webview.js"),
 		);
+
 		const scriptUri = webview.asWebviewUri(scriptPathOnDisk);
+
 		const nonce = this.generateNonce();
 
 		return `<!DOCTYPE html>

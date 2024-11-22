@@ -50,6 +50,7 @@ export class RedisListItem extends CollectionKeyItem {
 		const client = await RedisClient.connectToRedisResource(
 			this.parsedRedisResource,
 		);
+
 		return client.llen(this.key, this.db);
 	}
 
@@ -74,11 +75,13 @@ export class RedisListItem extends CollectionKeyItem {
 
 		// Construct tree items such that the numbering continues from the previously loaded items
 		const min = this.elementsShown;
+
 		const max =
 			Math.min(
 				this.elementsShown + RedisListItem.incrementCount,
 				this.size,
 			) - 1;
+
 		const values = await client.lrange(this.key, min, max, this.db);
 		this.elementsShown += values.length;
 

@@ -49,6 +49,7 @@ export class RedisSetItem extends CollectionKeyItem {
 		const client = await RedisClient.connectToRedisResource(
 			this.parsedRedisResource,
 		);
+
 		return client.scard(this.key, this.db);
 	}
 
@@ -72,6 +73,7 @@ export class RedisSetItem extends CollectionKeyItem {
 
 		// Sometimes SCAN returns no results, so continue SCANNING until we receive results or we reach the end
 		let curCursor = this.scanCursor;
+
 		const scannedElems: string[] = [];
 
 		do {
@@ -96,6 +98,7 @@ export class RedisSetItem extends CollectionKeyItem {
 				value: element,
 			} as CollectionElement;
 		});
+
 		return collectionElements;
 	}
 

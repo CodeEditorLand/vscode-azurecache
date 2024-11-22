@@ -63,7 +63,9 @@ export class CollectionWebview extends BaseWebview {
 	 */
 	private async loadAndSendNextChildren(clearCache: boolean): Promise<void> {
 		const elements = await this.parent.loadNextChildren(clearCache);
+
 		const hasMore = this.parent.hasNextChildren();
+
 		const collectionData = {
 			data: elements,
 			clearCache,
@@ -78,7 +80,9 @@ export class CollectionWebview extends BaseWebview {
 	public async refresh(): Promise<void> {
 		if (this.webviewPanel) {
 			const elements = await this.parent.loadNextChildren(true);
+
 			const hasMore = this.parent.hasNextChildren();
+
 			const collectionData = {
 				data: elements,
 				clearCache: true,
