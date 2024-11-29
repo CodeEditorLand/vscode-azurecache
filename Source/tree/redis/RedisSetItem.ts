@@ -14,11 +14,15 @@ import { CollectionKeyItem } from "../CollectionKeyItem";
  */
 export class RedisSetItem extends CollectionKeyItem {
 	private static readonly commandId = "azureCache.viewSet";
+
 	private static readonly contextValue = "redisSetItem";
+
 	private static readonly description = "(set)";
+
 	private static readonly incrementCount = 10;
 
 	protected webview: CollectionWebview = new CollectionWebview(this, "set");
+
 	private scanCursor?: string = "0";
 
 	get contextValue(): string {
@@ -84,7 +88,9 @@ export class RedisSetItem extends CollectionKeyItem {
 				"*",
 				this.db,
 			);
+
 			curCursor = result[0];
+
 			scannedElems.push(...result[1]);
 		} while (
 			curCursor !== "0" &&

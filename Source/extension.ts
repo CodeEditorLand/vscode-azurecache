@@ -31,16 +31,22 @@ export async function activate(
 	context: vscode.ExtensionContext,
 ): Promise<void> {
 	ExtVars.context = context;
+
 	ExtVars.ignoreBundle = false;
+
 	ExtVars.ui = new AzureUserInput(context.globalState);
+
 	ExtVars.outputChannel = createAzExtOutputChannel(
 		"Azure Cache",
 		ExtVars.prefix,
 	);
+
 	context.subscriptions.push(ExtVars.outputChannel);
+
 	registerUIExtensionVariables(ExtVars);
 
 	ExtVars.keyContentProvider = new KeyContentProvider();
+
 	context.subscriptions.push(
 		vscode.workspace.registerTextDocumentContentProvider(
 			ExtVars.prefix,
@@ -49,15 +55,18 @@ export async function activate(
 	);
 
 	const azureAccountTreeItem = new AzureAccountTreeItem();
+
 	context.subscriptions.push(azureAccountTreeItem);
 
 	ExtVars.treeDataProvider = new AzExtTreeDataProvider(
 		azureAccountTreeItem,
 		`${ExtVars.prefix}.loadMore`,
 	);
+
 	ExtVars.treeView = vscode.window.createTreeView(ExtVars.prefix, {
 		treeDataProvider: ExtVars.treeDataProvider,
 	});
+
 	context.subscriptions.push(ExtVars.treeView);
 
 	const accountExtension: vscode.Extension<AzureAccount> | undefined =
@@ -65,6 +74,7 @@ export async function activate(
 
 	if (accountExtension) {
 		const azureAccount = accountExtension.exports;
+
 		context.subscriptions.push(
 			azureAccount.onStatusChanged((status) => {
 				if (status === "LoggedOut") {

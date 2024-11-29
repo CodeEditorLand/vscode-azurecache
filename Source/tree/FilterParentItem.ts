@@ -6,5 +6,6 @@
  */
 export interface FilterParentItem {
 	getFilter(): string;
+
 	updateFilter(filterExpr: string): void;
 }

@@ -31,8 +31,11 @@ export abstract class KeyContentItem extends AzExtTreeItem {
 		key: string,
 	) {
 		super(parent);
+
 		this.parsedRedisResource = parent.parsedRedisResource;
+
 		this.db = parent.db;
+
 		this.key = key;
 	}
 }

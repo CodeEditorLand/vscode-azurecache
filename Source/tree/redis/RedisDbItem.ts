@@ -27,6 +27,7 @@ export class RedisDbItem extends KeyContainerItem implements FilterParentItem {
 	private static readonly contextValue = "redisDb";
 
 	private filterExpr = "*";
+
 	private scanCursor?: string = "0";
 
 	get contextValue(): string {
@@ -135,6 +136,7 @@ export class RedisDbItem extends KeyContainerItem implements FilterParentItem {
 	public updateFilter(filterExpr: string): void {
 		if (this.filterExpr !== filterExpr) {
 			this.filterExpr = filterExpr;
+
 			this.refresh();
 		}
 	}

@@ -14,12 +14,17 @@ import { CollectionKeyItem } from "../CollectionKeyItem";
  */
 export class RedisListItem extends CollectionKeyItem {
 	private static readonly commandId = "azureCache.viewList";
+
 	private static readonly contextValue = "redisListItem";
+
 	private static readonly description = "(list)";
+
 	private static readonly incrementCount = 10;
 
 	protected webview: CollectionWebview = new CollectionWebview(this, "list");
+
 	private elementsShown = 0;
+
 	private size = 0;
 
 	get contextValue(): string {
@@ -66,6 +71,7 @@ export class RedisListItem extends CollectionKeyItem {
 
 		if (clearCache) {
 			this.size = await client.llen(this.key, this.db);
+
 			this.elementsShown = 0;
 		}
 
@@ -83,6 +89,7 @@ export class RedisListItem extends CollectionKeyItem {
 			) - 1;
 
 		const values = await client.lrange(this.key, min, max, this.db);
+
 		this.elementsShown += values.length;
 
 		const collectionElements = values.map((value) => {

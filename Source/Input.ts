@@ -25,6 +25,7 @@ export async function textInput(
 			if (val) {
 				return null;
 			}
+
 			return ErrorEmptyInput;
 		},
 	});

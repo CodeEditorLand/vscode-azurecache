@@ -29,12 +29,16 @@ export class CollectionWebview extends BaseWebview {
 	 */
 	protected async sendData(): Promise<void> {
 		this.postMessage(WebviewCommand.View, WebviewView.CollectionKey);
+
 		this.postMessage(WebviewCommand.KeyType, this.type);
+
 		this.postMessage(WebviewCommand.KeyName, this.parent.key);
+
 		this.postMessage(
 			WebviewCommand.CollectionSize,
 			await this.parent.getSize(),
 		);
+
 		await this.loadAndSendNextChildren(true);
 	}
 
@@ -52,6 +56,7 @@ export class CollectionWebview extends BaseWebview {
 			// Hash filter changed
 			if (this.parent instanceof RedisHashItem) {
 				this.parent.updateFilter(message.value as string);
+
 				await this.loadAndSendNextChildren(true);
 			}
 		}
@@ -71,6 +76,7 @@ export class CollectionWebview extends BaseWebview {
 			clearCache,
 			hasMore,
 		} as CollectionWebviewData;
+
 		this.postMessage(WebviewCommand.CollectionData, collectionData);
 	}
 
@@ -88,6 +94,7 @@ export class CollectionWebview extends BaseWebview {
 				clearCache: true,
 				hasMore,
 			} as CollectionWebviewData;
+
 			this.postMessage(WebviewCommand.CollectionData, collectionData);
 		}
 	}

@@ -38,6 +38,7 @@ export class AzureSubscriptionTreeItem extends SubscriptionTreeItemBase {
 			typeof this.nextLink === "undefined"
 				? await resClient.listResources()
 				: await resClient.listNextResources(this.nextLink);
+
 		this.nextLink = redisCollection.nextLink;
 
 		return redisCollection.map(

@@ -51,14 +51,17 @@ export class KeyContentProvider implements vscode.TextDocumentContentProvider {
 				if (!subkey) {
 					throw new Error(Strings.ErrorMissingSubkey);
 				}
+
 				value = await client.lindex(key, parseInt(subkey), db);
 			} else if (type === "hash" || type === "set" || type === "zset") {
 				// For hash, set, and sorted set types, the key value must already be set in currentValue
 				if (typeof this.currentValue === "undefined") {
 					throw new Error(Strings.ErrorCurrentValue);
 				}
+
 				value = this.currentValue;
 			}
+
 			if (value === null) {
 				await vscode.window.showErrorMessage(Strings.ErrorReadKey);
 			}
@@ -67,6 +70,7 @@ export class KeyContentProvider implements vscode.TextDocumentContentProvider {
 		} finally {
 			// Reset values
 			this.currentResource = undefined;
+
 			this.currentValue = undefined;
 		}
 
@@ -94,6 +98,7 @@ export class KeyContentProvider implements vscode.TextDocumentContentProvider {
 		displayedSubkey?: string,
 	): Promise<void> {
 		this.currentValue = value;
+
 		this.currentResource = parsedRedisResource;
 
 		const uri = createKeyContentUri(
@@ -111,6 +116,7 @@ export class KeyContentProvider implements vscode.TextDocumentContentProvider {
 		this.onDidChangeEmitter.fire(uri);
 
 		const doc = await vscode.workspace.openTextDocument(uri);
+
 		await vscode.window.showTextDocument(doc, {
 			preserveFocus: true,
 			preview: false,

@@ -37,6 +37,7 @@ export class RedisClient {
 		 * If passed nothing, it will return an empty transaction corresponding to the cache's client.
 		 */
 		(dbOrNodeId?: number | string): Promise<IORedis.Pipeline>;
+
 		disconnect: { (): void };
 	};
 
@@ -53,6 +54,7 @@ export class RedisClient {
 		this.clusterNodeIds = clusterClients
 			? Array.from(clusterClients.keys())
 			: [];
+
 		this.getClient = Object.assign(
 			async (dbOrNodeId?: number | string) => {
 				// Reconnect the client if disconnected
@@ -88,12 +90,14 @@ export class RedisClient {
 					if (clusterNodeClient.status !== "ready") {
 						await clusterNodeClient.connect();
 					}
+
 					return clusterNodeClient.multi();
 				} else if (typeof dbOrNodeId === "number") {
 					// Arg is number, so interpret as DB number
 					// This does not execute until exec() is called on the transaction
 					transaction = transaction.select(dbOrNodeId);
 				}
+
 				return transaction;
 			},
 			{
@@ -110,6 +114,7 @@ export class RedisClient {
 		client.on("ready", async () => {
 			// Update clusterClients in constructor's scope so that this.getClient can access the updated clusterClients
 			clusterClients = await RedisClient.createClusterNodeMap(client);
+
 			this.clusterNodeIds = Array.from(clusterClients.keys());
 		});
 	}
@@ -247,6 +252,7 @@ export class RedisClient {
 						await RedisClient.createClusterNodeMap(client);
 
 					const redisClient = new RedisClient(client, clusterClients);
+
 					resolve(redisClient);
 					// Prevent from being called again
 					client.removeListener("ready", onReady);
@@ -259,6 +265,7 @@ export class RedisClient {
 		client.on("connect", () =>
 			ExtVars.outputChannel.appendLine("Redis connection established"),
 		);
+
 		client.on("reconnecting", () =>
 			ExtVars.outputChannel.appendLine("Redis connection re-established"),
 		);
@@ -269,6 +276,7 @@ export class RedisClient {
 		// This is called when the client first connects and on subsequent reconnects
 		client.on("ready", async () => {
 			ExtVars.outputChannel.appendLine("Redis connection ready");
+
 			pingInterval = setInterval(() => {
 				client.ping().catch(() => {
 					// Client might be disconnected
@@ -283,13 +291,16 @@ export class RedisClient {
 
 			if (pingInterval) {
 				clearInterval(pingInterval);
+
 				pingInterval = undefined;
 			}
 		});
 
 		client.on("error", (error) => {
 			ExtVars.outputChannel.appendLine("Redis error:");
+
 			ExtVars.outputChannel.appendLine(error);
+
 			vscode.window.showErrorMessage(
 				`Azure Cache error: ${error.message.toString()}\n${Strings.StrPromptRefreshCache}`,
 			);
@@ -309,6 +320,7 @@ export class RedisClient {
 
 			for (const primaryNodeClient of primaryNodeClients) {
 				const id = await primaryNodeClient.cluster("MYID");
+
 				clusterClients.set(id, primaryNodeClient);
 			}
 		}

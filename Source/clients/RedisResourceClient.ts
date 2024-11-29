@@ -118,6 +118,7 @@ export class RedisResourceClient {
 			try {
 				const parsedRedisResource =
 					await this.parseRedisResource(resource);
+
 				parsedResources.push(parsedRedisResource);
 			} catch (e) {
 				ExtVars.outputChannel.appendLine(e);
@@ -188,9 +189,11 @@ export class RedisResourceClient {
 			redisResource.shardCount > 0
 		) {
 			cluster = true;
+
 			shardCount = redisResource.shardCount;
 		} else {
 			cluster = false;
+
 			shardCount = 0;
 		}
 
@@ -221,6 +224,7 @@ export class RedisResourceClient {
 	 */
 	private parseResourceId(resourceId: string): ParsedResourceId {
 		// E.g. /subscriptions/{my-subscription-guid}/resourceGroups/{my-resource-name}/providers/Microsoft.Cache/Redis/{my-cache-name}
+
 		const regex =
 			/\/subscriptions\/([^/]+)\/resourceGroups\/([^/]+)\/providers\/Microsoft\.Cache\/[^/]+\/([^/]+)/i;
 

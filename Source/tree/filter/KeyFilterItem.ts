@@ -19,6 +19,7 @@ import { FilterParentItem } from "../FilterParentItem";
  */
 export class KeyFilterItem extends AzExtTreeItem {
 	private static readonly contextValue = "keyFilterItem";
+
 	private static readonly commandId = "azureCache.setKeyFilter";
 
 	constructor(readonly parent: AzExtParentTreeItem & FilterParentItem) {

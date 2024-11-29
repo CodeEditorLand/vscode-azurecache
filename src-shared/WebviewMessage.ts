@@ -8,5 +8,6 @@ import { WebviewCommand } from "./WebviewCommand";
  */
 export interface WebviewMessage {
 	command: WebviewCommand;
+
 	value: unknown;
 }

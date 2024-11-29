@@ -13,6 +13,7 @@ import { RedisDbItem } from "./RedisDbItem";
  */
 export class RedisOtherItem extends KeyContentItem {
 	private static readonly contextValue = "redisOtherItem";
+
 	private static readonly commandId = "azureCache.showUnsupportedItem";
 
 	constructor(

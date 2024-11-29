@@ -33,10 +33,13 @@ export class AzureCacheItem
 	implements FilterParentItem
 {
 	public static contextValue = "redisCache";
+
 	private static commandId = "azureCache.viewCacheProps";
 
 	private filterExpr: string;
+
 	private isClustered: boolean;
+
 	private webview: CachePropsWebview;
 	// When the filter expression changes for a clustered cache, use emitter to notify the child tree items.
 	private onFilterChangeEmitter = new vscode.EventEmitter<void>();
@@ -47,8 +50,11 @@ export class AzureCacheItem
 		public parsedRedisResource: ParsedRedisResource,
 	) {
 		super(parent);
+
 		this.filterExpr = "*";
+
 		this.isClustered = this.parsedRedisResource.cluster;
+
 		this.webview = new CachePropsWebview();
 	}
 
@@ -173,6 +179,7 @@ export class AzureCacheItem
 	public async refreshImpl(): Promise<void> {
 		// Get updated ParsedRedisResource
 		const { name, resourceGroup } = this.parsedRedisResource;
+
 		this.parsedRedisResource = await this.resClient.getRedisResourceByName(
 			resourceGroup,
 			name,
@@ -188,6 +195,7 @@ export class AzureCacheItem
 	public updateFilter(filterExpr: string): void {
 		if (this.filterExpr !== filterExpr) {
 			this.filterExpr = filterExpr;
+
 			this.onFilterChangeEmitter.fire();
 		}
 	}

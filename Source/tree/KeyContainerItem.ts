@@ -24,7 +24,9 @@ export abstract class KeyContainerItem extends AzExtParentTreeItem {
 		db?: number,
 	) {
 		super(parent);
+
 		this.parsedRedisResource = parent.parsedRedisResource;
+
 		this.db = db;
 	}
 }

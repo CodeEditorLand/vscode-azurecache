@@ -21,9 +21,13 @@ export abstract class BaseWebview {
 	 * To be implemented by subclasses.
 	 */
 	protected abstract readonly viewType: string;
+
 	public abstract async refresh(data: unknown): Promise<void>;
+
 	protected abstract async sendData(data: unknown): Promise<void>;
+
 	protected abstract onDidReceiveMessage(message: WebviewMessage): void;
+
 	protected onDidDispose?(): void;
 
 	/**
@@ -41,6 +45,7 @@ export abstract class BaseWebview {
 				// Sometimes webview may still exist while in a disposed state without onDidDispose ever being called, so
 				// handle this scenario by recreating the webview panel
 				this.webviewPanel.dispose();
+
 				await this.createWebviewPanel(title, data);
 			}
 		} else {
@@ -91,6 +96,7 @@ export abstract class BaseWebview {
 		const fontPathWebviewUri = this.webviewPanel.webview
 			.asWebviewUri(fontPathUri)
 			.toString();
+
 		this.postMessage(WebviewCommand.FontUri, fontPathWebviewUri);
 
 		// Send data to webview
@@ -103,6 +109,7 @@ export abstract class BaseWebview {
 
 		this.webviewPanel.onDidDispose(() => {
 			this.webviewPanel = undefined;
+
 			this.onDidDispose?.();
 		});
 	}

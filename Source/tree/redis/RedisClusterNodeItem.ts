@@ -26,9 +26,11 @@ import { RedisZSetItem } from "./RedisZSetItem";
  */
 export class RedisClusterNodeItem extends KeyContainerItem {
 	private static readonly contextValue = "redisClusterNode";
+
 	private static readonly description = "(node)";
 
 	private scanCursor?: string;
+
 	private shard?: number;
 
 	constructor(
@@ -38,6 +40,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
 		readonly port: number,
 	) {
 		super(parent);
+
 		this.scanCursor = "0";
 
 		if (port >= 10000) {
@@ -50,6 +53,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
 			const lastTwoDigits = this.port % 100;
 
 			const shardNumber = Math.floor(lastTwoDigits / 2);
+
 			this.shard = shardNumber;
 		}
 
@@ -71,6 +75,7 @@ export class RedisClusterNodeItem extends KeyContainerItem {
 		if (this.port) {
 			return `(${this.port})`;
 		}
+
 		return RedisClusterNodeItem.description;
 	}
 

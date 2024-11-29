@@ -31,7 +31,9 @@ export abstract class CollectionKeyItem extends AzExtTreeItem {
 		readonly key: string,
 	) {
 		super(parent);
+
 		this.parsedRedisResource = parent.parsedRedisResource;
+
 		this.db = parent.db;
 	}
 
@@ -44,7 +46,9 @@ export abstract class CollectionKeyItem extends AzExtTreeItem {
 	}
 
 	public abstract getSize(): Promise<number>;
+
 	public abstract hasNextChildren(): boolean;
+
 	public abstract loadNextChildren(
 		clearCache: boolean,
 	): Promise<CollectionElement[]>;

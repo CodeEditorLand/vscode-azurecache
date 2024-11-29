@@ -14,12 +14,17 @@ import { CollectionKeyItem } from "../CollectionKeyItem";
  */
 export class RedisZSetItem extends CollectionKeyItem {
 	private static readonly commandId = "azureCache.viewZSet";
+
 	private static readonly contextValue = "redisZSetItem";
+
 	private static readonly description = "(zset)";
+
 	private static readonly incrementCount = 10;
 
 	protected webview: CollectionWebview = new CollectionWebview(this, "zset");
+
 	private length = 0;
+
 	private elementsShown = 0;
 
 	get contextValue(): string {
@@ -66,6 +71,7 @@ export class RedisZSetItem extends CollectionKeyItem {
 
 		if (clearCache) {
 			this.length = await client.zcard(this.key, this.db);
+
 			this.elementsShown = 0;
 		}
 
@@ -104,6 +110,7 @@ export class RedisZSetItem extends CollectionKeyItem {
 					id: scannedElems[index],
 					value,
 				} as CollectionElement;
+
 				collectionElements.push(collectionElement);
 			}
 		}

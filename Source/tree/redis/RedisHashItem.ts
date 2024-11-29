@@ -18,12 +18,17 @@ export class RedisHashItem
 	implements FilterParentItem
 {
 	private static readonly commandId = "azureCache.viewHash";
+
 	private static readonly contextValue = "redisHashItem";
+
 	private static readonly description = "(hash)";
+
 	private static readonly incrementCount = 10;
 
 	protected webview: CollectionWebview = new CollectionWebview(this, "hash");
+
 	private filterExpr = "*";
+
 	private scanCursor?: string = "0";
 
 	get contextValue(): string {
@@ -90,7 +95,9 @@ export class RedisHashItem
 				this.filterExpr,
 				this.db,
 			);
+
 			curCursor = result[0];
+
 			scannedFields.push(...result[1]);
 			// scannedFields contains field name and value, so divide by 2 to get number of values scanned
 		} while (
@@ -115,6 +122,7 @@ export class RedisHashItem
 					id: field,
 					value: scannedFields[index],
 				} as CollectionElement;
+
 				collectionElements.push(collectionElement);
 			}
 		}
@@ -138,6 +146,7 @@ export class RedisHashItem
 
 	public reset(): void {
 		this.filterExpr = "*";
+
 		this.scanCursor = "0";
 	}
 }

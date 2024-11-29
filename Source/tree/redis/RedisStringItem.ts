@@ -11,7 +11,9 @@ import { KeyContentItem } from "../KeyContentItem";
  */
 export class RedisStringItem extends KeyContentItem {
 	private static readonly contextValue = "redisStringItem";
+
 	private static readonly commandId = "azureCache.showStringItem";
+
 	private static readonly description = "(string)";
 
 	get commandId(): string {
